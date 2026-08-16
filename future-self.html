@@ -5,51 +5,58 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Future Self Audio — Clarkitect Resources</title>
 <meta name="description" content="Write your future life in third person, turn it into a news profile read aloud, listen every night. The complete protocol.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#f7f3ec; --ink:#211c15; --muted:#6f6558; --line:#d9d0c1;
-    --accent:#8a5a2b; --card:#fffdf8; --mono:"SF Mono",Menlo,Consolas,monospace;
+    --paper:#f5f0e6; --ink:#211c15; --muted:#6f6558; --line:#d6cbb8;
+    --accent:#8a5a2b; --card:#fffdf6; --mono:"SF Mono",Menlo,Consolas,monospace;
     --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
     --sans:-apple-system,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    --hand:'Caveat',cursive;
+    --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.07'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
   }
   *{box-sizing:border-box;margin:0;padding:0}
   body{background:var(--paper);color:var(--ink);font-family:var(--serif);line-height:1.65;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:720px;margin:0 auto;padding:0 24px}
+  body::before{content:"";position:fixed;inset:0;background-image:var(--grain);pointer-events:none;opacity:.5;z-index:0}
+  .wrap{max-width:740px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
   .top{font-family:var(--sans);font-size:13px;padding:24px 0}
   .top a{color:var(--muted);text-decoration:none;letter-spacing:.06em}
   .top a:hover{color:var(--accent)}
-  header{padding:24px 0 36px;border-bottom:1px solid var(--line)}
-  .kicker{font-family:var(--sans);font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--accent)}
-  h1{font-size:clamp(34px,6vw,52px);font-weight:400;margin-top:10px;letter-spacing:-.01em}
-  .lede{margin-top:16px;font-size:19px;color:var(--muted)}
+  header{padding:24px 0 40px;border-bottom:2px solid var(--ink)}
+  .kicker{font-family:var(--sans);font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:var(--accent)}
+  h1{font-family:var(--hand);font-weight:700;font-size:clamp(48px,9vw,84px);line-height:1.02;margin-top:12px}
+  .lede{margin-top:16px;font-size:20px;color:var(--muted)}
   main{padding:8px 0 64px}
-  section{margin-top:52px}
-  h2{font-size:15px;font-family:var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:18px}
+  section{margin-top:64px}
+  .hcard{display:inline-block;font-family:var(--hand);font-weight:700;font-size:clamp(30px,5vw,42px);line-height:1;color:var(--ink);background-color:var(--card);background-image:var(--grain);padding:10px 26px 14px;border:1px solid var(--line);box-shadow:3px 4px 0 rgba(33,28,21,.12);transform:rotate(-1.2deg);margin-bottom:24px}
+  section:nth-of-type(even) .hcard{transform:rotate(.9deg)}
   h3{font-size:21px;font-weight:600;margin:26px 0 8px}
   p{margin-bottom:14px}
   p.note{color:var(--muted);font-size:16px}
   ol.steps{counter-reset:s;list-style:none}
-  ol.steps>li{position:relative;padding:0 0 22px 58px;counter-increment:s}
-  ol.steps>li::before{content:"0" counter(s);position:absolute;left:0;top:2px;font-family:var(--sans);font-size:13px;letter-spacing:.1em;color:var(--accent);border:1px solid var(--line);border-radius:4px;padding:4px 7px;background:var(--card)}
+  ol.steps>li{position:relative;padding:0 0 24px 60px;counter-increment:s}
+  ol.steps>li::before{content:"0" counter(s);position:absolute;left:0;top:0;font-family:var(--hand);font-weight:700;font-size:26px;color:var(--accent);border:1px solid var(--line);border-radius:4px;padding:0px 9px 3px;background:var(--card);background-image:var(--grain);transform:rotate(-2deg)}
   ol.steps b{font-weight:600}
   ul.plain{list-style:none}
   ul.plain li{padding:6px 0 6px 22px;position:relative}
   ul.plain li::before{content:"—";position:absolute;left:0;color:var(--accent)}
   ol.qs{list-style:none;counter-reset:q}
-  ol.qs li{counter-increment:q;padding:10px 0 10px 44px;position:relative;border-bottom:1px solid var(--line)}
-  ol.qs li::before{content:counter(q);position:absolute;left:4px;top:12px;font-family:var(--sans);font-size:13px;color:var(--accent)}
+  ol.qs li{counter-increment:q;padding:12px 0 12px 48px;position:relative;border-bottom:1px solid var(--line)}
+  ol.qs li::before{content:counter(q);position:absolute;left:6px;top:8px;font-family:var(--hand);font-weight:700;font-size:24px;color:var(--accent)}
   .promptbox{position:relative;background:#26211a;color:#efe9dd;border-radius:6px;padding:26px;font-family:var(--mono);font-size:13.5px;line-height:1.7;white-space:pre-wrap;overflow-x:auto;margin:14px 0}
-  .copybtn{position:absolute;top:12px;right:12px;font-family:var(--sans);font-size:12px;letter-spacing:.06em;background:transparent;color:#efe9dd;border:1px solid #5a5140;border-radius:4px;padding:6px 12px;cursor:pointer}
-  .copybtn:hover{border-color:#efe9dd}
+  .copybtn{font-family:var(--sans);font-size:12px;letter-spacing:.06em;background:transparent;color:var(--ink);border:1px solid var(--line);border-radius:4px;padding:6px 12px;cursor:pointer;margin-top:4px}
+  .copybtn:hover{border-color:var(--accent);color:var(--accent)}
   table{width:100%;border-collapse:collapse;font-size:15.5px;margin:10px 0}
   th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
   th{font-family:var(--sans);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
   td:first-child{white-space:nowrap;font-weight:600}
-  .rule{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:0 6px 6px 0;padding:18px 22px;margin:12px 0}
-  .rule b{font-weight:600}
+  .rule{background:var(--card);background-image:var(--grain);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:0 6px 6px 0;padding:18px 22px;margin:12px 0;box-shadow:2px 3px 0 rgba(33,28,21,.08)}
+  .rule b{font-family:var(--hand);font-weight:700;font-size:24px;display:block;margin-bottom:2px}
   .tablewrap{overflow-x:auto}
-  footer{border-top:1px solid var(--line);padding:28px 0 56px;font-family:var(--sans);font-size:13px;color:var(--muted);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-  @media(max-width:600px){ol.steps>li{padding-left:48px}}
+  footer{border-top:2px solid var(--ink);padding:28px 0 56px;font-family:var(--sans);font-size:13px;color:var(--muted);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  @media(max-width:600px){ol.steps>li{padding-left:50px}}
 </style>
 </head>
 <body>
@@ -64,24 +71,24 @@
 
     <main>
       <section>
-        <h2>Why it works</h2>
+        <div class="hcard">Why it works</div>
         <p>Affirmations argue with your brain. You say "I am wealthy" and a quiet voice answers "no you're not," and that argument is the whole experience. A news article skips the argument. When a neutral third party <em>reports</em> your life as accomplished fact — dateline, background, quotes — your nervous system files it the way it files any other reporting: as something that already happened. The believability is the mechanism. Which means the entire craft is in making it believable: real names, real towns, real numbers, restrained language, no hype.</p>
       </section>
 
       <section>
-        <h2>The protocol</h2>
+        <div class="hcard">The protocol</div>
         <ol class="steps">
           <li><b>The sit-down.</b> Set aside deep time — the full version is four hours, phone in another room. Write what you want your life to look like <b>in the third person, present tense.</b> Not "I will have a workshop" — "<em>[Name] walks into the workshop.</em>" Don't list goals; write scenes. Use the ten prompts below.</li>
           <li><b>Build the dossier.</b> Pull the true facts of your past — hometown, family, the schooling, the jobs, the leap, the numbers you've actually written in notebooks. The profile needs verifiable history to make the future feel reported. If you journal, you've already written most of this.</li>
           <li><b>Generate the script.</b> Feed the dossier and your scenes into an AI with the generation prompt below. Ask for roughly 150 words per minute of audio you want — 800 words is a strong five-minute first cut.</li>
           <li><b>Give it a voice.</b> ElevenLabs, text-to-speech. <b>Do not clone your own voice</b> — the illusion is a stranger reporting on you, with no reason to flatter you. Pick a calm documentary narrator and use the settings below.</li>
-          <li><b>Listen every night.</b> Export the MP3 to your phone. Play it in bed, low volume. Repetition is the practice — don't re-cut it for at least 30 days.</li>
+          <li><b>Listen every night.</b> Export the MP3 to your phone. Play it in bed, low volume. Take three slow breaths before you press play — let the body settle first, then let the story land. Repetition is the practice — don't re-cut it for at least 30 days.</li>
         </ol>
       </section>
 
       <section>
-        <h2>The sit-down · ten prompts</h2>
-        <p class="note">In order. Third person, present tense, no editing. Scenes, not goals.</p>
+        <div class="hcard">The sit-down</div>
+        <p class="note">Ten prompts, in order. Third person, present tense, no editing. Scenes, not goals — and in every scene, note what it <em>feels</em> like in the body. The feeling is the active ingredient.</p>
         <ol class="qs">
           <li><b>6:00 AM.</b> They wake up. Where? What does the light do? First sound? Write 20 minutes without stopping.</li>
           <li><b>The walk.</b> They step outside. Walk the whole property. Name every structure, everything growing, everything being built.</li>
@@ -97,7 +104,7 @@
       </section>
 
       <section>
-        <h2>The generation prompt</h2>
+        <div class="hcard">The generation prompt</div>
         <p class="note">Paste this into your AI along with your dossier and your sit-down scenes. Fill the brackets.</p>
         <div class="promptbox" id="genprompt">You are a magazine feature writer. You are writing a profile of a real
 person named [NAME], dated [FUTURE YEAR]. Everything in the attached
@@ -115,23 +122,30 @@ RULES
    road, the exact dollar figure written in a notebook) is worth more
    than any claim about impact. Use real towns, real names, real numbers
    from the attached material.
-4. Include verifiable-sounding structure: a dateline, background
+4. Feeling is the payload. Each scene should carry one bodily feeling —
+   ease, pride, belonging, quiet. Report it through physical detail,
+   never by naming emotions abstractly.
+5. Stewardship, not conquest. The subject participates in their land,
+   family, and work — they belong to it. Avoid domination language
+   ("empire," "crushing," "claiming").
+6. Include verifiable-sounding structure: a dateline, background
    paragraphs on where they came from, at least two direct quotes from
-   [NAME], one from [PARTNER OR CLOSE PERSON].
-5. Open on a physical scene, not a thesis. Close on something small.
-6. Cover, in this order: the scene → what they own and run now → where
+   [NAME], one from [PARTNER OR CLOSE PERSON]. Prefer things they have
+   actually said in real life — ask for them if not provided.
+7. Open on a physical scene, not a thesis. Close on something small.
+8. Cover, in this order: the scene → what they own and run now → where
    they came from → the turn (the leap they made) → what they built →
    the money, stated plainly → the two or three masteries they refused
    to choose between → home and family → the thread back to their
    origins → what it is all for.
-7. Length: [WORDS] words. Roughly 150 words per minute of audio.
-8. Output plain prose only. No headers, no bullets, no markdown. It will
-   be fed directly to a text-to-speech engine.</div>
-        <button class="copybtn" onclick="copyPrompt()" style="position:static;margin-top:4px;color:var(--ink);border-color:var(--line)">Copy prompt</button>
+9. Length: [WORDS] words. Roughly 150 words per minute of audio.
+10. Output plain prose only. No headers, no bullets, no markdown. It
+    will be fed directly to a text-to-speech engine.</div>
+        <button class="copybtn" onclick="copyPrompt()">Copy prompt</button>
       </section>
 
       <section>
-        <h2>Voice settings</h2>
+        <div class="hcard">Voice settings</div>
         <p class="note">ElevenLabs → Text to Speech. Pick a mature documentary narrator from the voice library — warm, neutral, unhurried. Test three; keep the one that makes your chest drop.</p>
         <div class="tablewrap">
         <table>
@@ -152,9 +166,10 @@ RULES
       </section>
 
       <section>
-        <h2>The rules</h2>
-        <div class="rule"><b>Their numbers, not bigger ones.</b> The exact figure they once wrote in a notebook, hit precisely, is more believable than any number you invent.</div>
+        <div class="hcard">The rules</div>
+        <div class="rule"><b>Your numbers, not bigger ones.</b> The exact figure you once wrote in a notebook, hit precisely, is more believable than any number you invent.</div>
         <div class="rule"><b>Don't clone your own voice.</b> The mechanism is a third party with no reason to flatter you.</div>
+        <div class="rule"><b>Feel it from inside.</b> The narrator watches from outside; you listen from inside the life. When a scene lands, let it breathe — don't rush to the next one.</div>
         <div class="rule"><b>Sit with version one for 30 days.</b> The power is repetition, not iteration.</div>
         <div class="rule"><b>Watch what makes you tear up.</b> That line is pointing at truth worth chasing. Follow it in the next cut — and in your actual plans.</div>
       </section>
@@ -170,7 +185,7 @@ RULES
 function copyPrompt(){
   const t=document.getElementById('genprompt').innerText;
   navigator.clipboard.writeText(t).then(()=>{
-    const b=document.querySelectorAll('.copybtn')[0];
+    const b=document.querySelector('.copybtn');
     b.textContent='Copied';setTimeout(()=>b.textContent='Copy prompt',1600);
   });
 }
