@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clarkitect Resources</title>
+<meta name="description" content="Tools and protocols for designing a life on purpose. From Roger Clark — architect, systems builder.">
+<style>
+  :root{
+    --paper:#f7f3ec; --ink:#211c15; --muted:#6f6558; --line:#d9d0c1;
+    --accent:#8a5a2b; --card:#fffdf8;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    --sans:-apple-system,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--paper);color:var(--ink);font-family:var(--serif);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:820px;margin:0 auto;padding:0 24px}
+  header{padding:64px 0 40px;border-bottom:1px solid var(--line)}
+  .kicker{font-family:var(--sans);font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}
+  h1{font-size:clamp(38px,7vw,64px);font-weight:400;letter-spacing:-.01em;margin-top:10px}
+  h1 em{font-style:italic;color:var(--accent)}
+  .lede{margin-top:18px;font-size:19px;color:var(--muted);max-width:56ch}
+  main{padding:48px 0 24px}
+  .sec-label{font-family:var(--sans);font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
+  .card{display:block;background:var(--card);border:1px solid var(--line);border-radius:6px;padding:32px;text-decoration:none;color:inherit;transition:border-color .15s ease, transform .15s ease}
+  .card:hover{border-color:var(--accent);transform:translateY(-2px)}
+  .card .num{font-family:var(--sans);font-size:12px;letter-spacing:.2em;color:var(--accent)}
+  .card h2{font-size:28px;font-weight:400;margin:8px 0 10px}
+  .card p{color:var(--muted);max-width:60ch}
+  .card .go{font-family:var(--sans);font-size:13px;letter-spacing:.08em;color:var(--accent);margin-top:18px;display:inline-block}
+  .soon{margin-top:20px;display:grid;gap:12px}
+  .soon .card{opacity:.55;pointer-events:none}
+  .soon .card h2{font-size:20px}
+  footer{border-top:1px solid var(--line);margin-top:64px;padding:28px 0 56px;font-family:var(--sans);font-size:13px;color:var(--muted);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  @media(max-width:600px){header{padding:44px 0 32px}.card{padding:24px}}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="kicker">Clarkitect</div>
+      <h1>Resources for a life <em>designed on purpose</em></h1>
+      <p class="lede">Protocols, tools, and small structures — for architecting the life you actually want, with your own hands and the best new instruments.</p>
+    </header>
+
+    <main>
+      <div class="sec-label">01 · Start here</div>
+      <a class="card" href="future-self.html">
+        <span class="num">PROTOCOL 01</span>
+        <h2>The Future Self Audio</h2>
+        <p>Write your future life in the third person. Turn it into a news profile someone else reads aloud. Listen every night. The complete protocol — the writing sit-down, the generation prompt, the voice settings — in about an hour of work.</p>
+        <span class="go">Read the protocol →</span>
+      </a>
+
+      <div class="soon">
+        <div class="sec-label" style="margin:28px 0 8px">In the shop</div>
+        <div class="card"><span class="num">TOOL 02</span><h2>The Vision Board Maker</h2><p>A guided questionnaire that turns your answers into a vision board in your own style — plus the script for your audio.</p></div>
+      </div>
+    </main>
+
+    <footer>
+      <span>© Roger Clark · The Clarkitect</span>
+      <span>Built by hand, amplified by AI</span>
+    </footer>
+  </div>
+</body>
+</html>

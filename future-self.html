@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Future Self Audio — Clarkitect Resources</title>
+<meta name="description" content="Write your future life in third person, turn it into a news profile read aloud, listen every night. The complete protocol.">
+<style>
+  :root{
+    --paper:#f7f3ec; --ink:#211c15; --muted:#6f6558; --line:#d9d0c1;
+    --accent:#8a5a2b; --card:#fffdf8; --mono:"SF Mono",Menlo,Consolas,monospace;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    --sans:-apple-system,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--paper);color:var(--ink);font-family:var(--serif);line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:720px;margin:0 auto;padding:0 24px}
+  .top{font-family:var(--sans);font-size:13px;padding:24px 0}
+  .top a{color:var(--muted);text-decoration:none;letter-spacing:.06em}
+  .top a:hover{color:var(--accent)}
+  header{padding:24px 0 36px;border-bottom:1px solid var(--line)}
+  .kicker{font-family:var(--sans);font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--accent)}
+  h1{font-size:clamp(34px,6vw,52px);font-weight:400;margin-top:10px;letter-spacing:-.01em}
+  .lede{margin-top:16px;font-size:19px;color:var(--muted)}
+  main{padding:8px 0 64px}
+  section{margin-top:52px}
+  h2{font-size:15px;font-family:var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:18px}
+  h3{font-size:21px;font-weight:600;margin:26px 0 8px}
+  p{margin-bottom:14px}
+  p.note{color:var(--muted);font-size:16px}
+  ol.steps{counter-reset:s;list-style:none}
+  ol.steps>li{position:relative;padding:0 0 22px 58px;counter-increment:s}
+  ol.steps>li::before{content:"0" counter(s);position:absolute;left:0;top:2px;font-family:var(--sans);font-size:13px;letter-spacing:.1em;color:var(--accent);border:1px solid var(--line);border-radius:4px;padding:4px 7px;background:var(--card)}
+  ol.steps b{font-weight:600}
+  ul.plain{list-style:none}
+  ul.plain li{padding:6px 0 6px 22px;position:relative}
+  ul.plain li::before{content:"—";position:absolute;left:0;color:var(--accent)}
+  ol.qs{list-style:none;counter-reset:q}
+  ol.qs li{counter-increment:q;padding:10px 0 10px 44px;position:relative;border-bottom:1px solid var(--line)}
+  ol.qs li::before{content:counter(q);position:absolute;left:4px;top:12px;font-family:var(--sans);font-size:13px;color:var(--accent)}
+  .promptbox{position:relative;background:#26211a;color:#efe9dd;border-radius:6px;padding:26px;font-family:var(--mono);font-size:13.5px;line-height:1.7;white-space:pre-wrap;overflow-x:auto;margin:14px 0}
+  .copybtn{position:absolute;top:12px;right:12px;font-family:var(--sans);font-size:12px;letter-spacing:.06em;background:transparent;color:#efe9dd;border:1px solid #5a5140;border-radius:4px;padding:6px 12px;cursor:pointer}
+  .copybtn:hover{border-color:#efe9dd}
+  table{width:100%;border-collapse:collapse;font-size:15.5px;margin:10px 0}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-family:var(--sans);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  td:first-child{white-space:nowrap;font-weight:600}
+  .rule{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:0 6px 6px 0;padding:18px 22px;margin:12px 0}
+  .rule b{font-weight:600}
+  .tablewrap{overflow-x:auto}
+  footer{border-top:1px solid var(--line);padding:28px 0 56px;font-family:var(--sans);font-size:13px;color:var(--muted);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  @media(max-width:600px){ol.steps>li{padding-left:48px}}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="top"><a href="index.html">← Clarkitect Resources</a></nav>
+
+    <header>
+      <div class="kicker">Protocol 01</div>
+      <h1>The Future Self Audio</h1>
+      <p class="lede">Write your future life in the third person. Turn it into a news profile someone else reads aloud. Listen every night. About an hour of work for version one.</p>
+    </header>
+
+    <main>
+      <section>
+        <h2>Why it works</h2>
+        <p>Affirmations argue with your brain. You say "I am wealthy" and a quiet voice answers "no you're not," and that argument is the whole experience. A news article skips the argument. When a neutral third party <em>reports</em> your life as accomplished fact — dateline, background, quotes — your nervous system files it the way it files any other reporting: as something that already happened. The believability is the mechanism. Which means the entire craft is in making it believable: real names, real towns, real numbers, restrained language, no hype.</p>
+      </section>
+
+      <section>
+        <h2>The protocol</h2>
+        <ol class="steps">
+          <li><b>The sit-down.</b> Set aside deep time — the full version is four hours, phone in another room. Write what you want your life to look like <b>in the third person, present tense.</b> Not "I will have a workshop" — "<em>[Name] walks into the workshop.</em>" Don't list goals; write scenes. Use the ten prompts below.</li>
+          <li><b>Build the dossier.</b> Pull the true facts of your past — hometown, family, the schooling, the jobs, the leap, the numbers you've actually written in notebooks. The profile needs verifiable history to make the future feel reported. If you journal, you've already written most of this.</li>
+          <li><b>Generate the script.</b> Feed the dossier and your scenes into an AI with the generation prompt below. Ask for roughly 150 words per minute of audio you want — 800 words is a strong five-minute first cut.</li>
+          <li><b>Give it a voice.</b> ElevenLabs, text-to-speech. <b>Do not clone your own voice</b> — the illusion is a stranger reporting on you, with no reason to flatter you. Pick a calm documentary narrator and use the settings below.</li>
+          <li><b>Listen every night.</b> Export the MP3 to your phone. Play it in bed, low volume. Repetition is the practice — don't re-cut it for at least 30 days.</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>The sit-down · ten prompts</h2>
+        <p class="note">In order. Third person, present tense, no editing. Scenes, not goals.</p>
+        <ol class="qs">
+          <li><b>6:00 AM.</b> They wake up. Where? What does the light do? First sound? Write 20 minutes without stopping.</li>
+          <li><b>The walk.</b> They step outside. Walk the whole property. Name every structure, everything growing, everything being built.</li>
+          <li><b>The work block.</b> What are they actually doing at 10 AM on a Tuesday? Who's on the call? What do they no longer do, because someone else does?</li>
+          <li><b>The hands.</b> Afternoon, away from screens. What's on the workbench? What's the material? Who is it for?</li>
+          <li><b>The table.</b> Dinner. Who's there. What's on it. What's the conversation.</li>
+          <li><b>The money.</b> Write the balances. Write the monthly number. A big opportunity shows up — what happens in the first sixty seconds?</li>
+          <li><b>The people they're building for.</b> What do they call them? What did they do today? What are they teaching without saying it out loud?</li>
+          <li><b>The hard part.</b> What did they give up? What do they still fight? Write it honestly — the script is stronger with a shadow in it.</li>
+          <li><b>The return.</b> They go back to where they came from. What's changed? Who's standing there with them?</li>
+          <li><b>9:00 PM.</b> They write one line in a journal. What is it?</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>The generation prompt</h2>
+        <p class="note">Paste this into your AI along with your dossier and your sit-down scenes. Fill the brackets.</p>
+        <div class="promptbox" id="genprompt">You are a magazine feature writer. You are writing a profile of a real
+person named [NAME], dated [FUTURE YEAR]. Everything in the attached
+material about their past is true. Everything about their present in the
+piece is what they are building toward — write it as accomplished,
+verified fact.
+
+RULES
+1. Third person. Present tense. Never future tense, never conditional.
+   "[NAME] owns," not "[NAME] will own" or "hopes to own."
+2. Journalist register. Restrained, specific, faintly skeptical. You are
+   not impressed by them; you are reporting on them. No hype adjectives,
+   no inspirational language, no summarizing their significance.
+3. Detail beats scale. One true small thing (the dog's name, the gravel
+   road, the exact dollar figure written in a notebook) is worth more
+   than any claim about impact. Use real towns, real names, real numbers
+   from the attached material.
+4. Include verifiable-sounding structure: a dateline, background
+   paragraphs on where they came from, at least two direct quotes from
+   [NAME], one from [PARTNER OR CLOSE PERSON].
+5. Open on a physical scene, not a thesis. Close on something small.
+6. Cover, in this order: the scene → what they own and run now → where
+   they came from → the turn (the leap they made) → what they built →
+   the money, stated plainly → the two or three masteries they refused
+   to choose between → home and family → the thread back to their
+   origins → what it is all for.
+7. Length: [WORDS] words. Roughly 150 words per minute of audio.
+8. Output plain prose only. No headers, no bullets, no markdown. It will
+   be fed directly to a text-to-speech engine.</div>
+        <button class="copybtn" onclick="copyPrompt()" style="position:static;margin-top:4px;color:var(--ink);border-color:var(--line)">Copy prompt</button>
+      </section>
+
+      <section>
+        <h2>Voice settings</h2>
+        <p class="note">ElevenLabs → Text to Speech. Pick a mature documentary narrator from the voice library — warm, neutral, unhurried. Test three; keep the one that makes your chest drop.</p>
+        <div class="tablewrap">
+        <table>
+          <tr><th>Setting</th><th>Value</th><th>Why</th></tr>
+          <tr><td>Model</td><td>Multilingual v2</td><td>Most stable for long, even reads. Flash is built for speed, not warmth.</td></tr>
+          <tr><td>Stability</td><td>50–60</td><td>This should sound read off a page, not performed.</td></tr>
+          <tr><td>Similarity</td><td>75</td><td>Standard.</td></tr>
+          <tr><td>Style</td><td>0–15</td><td>Flat delivery is more believable than dramatic delivery.</td></tr>
+          <tr><td>Speed</td><td>0.95</td><td>Slightly under normal. Give it room.</td></tr>
+        </table>
+        </div>
+        <h3>Make it more real</h3>
+        <ul class="plain">
+          <li>Layer a quiet ambience bed under the voice — birds, wind, distant water — around −30&nbsp;dB. News pieces have room tone; silence sounds synthetic.</li>
+          <li>One restrained music sting at the open, returning at the close. Not throughout.</li>
+          <li>Run the final mix through a free enhancer (Adobe Podcast Enhance) to glue voice and ambience into one recording.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>The rules</h2>
+        <div class="rule"><b>Their numbers, not bigger ones.</b> The exact figure they once wrote in a notebook, hit precisely, is more believable than any number you invent.</div>
+        <div class="rule"><b>Don't clone your own voice.</b> The mechanism is a third party with no reason to flatter you.</div>
+        <div class="rule"><b>Sit with version one for 30 days.</b> The power is repetition, not iteration.</div>
+        <div class="rule"><b>Watch what makes you tear up.</b> That line is pointing at truth worth chasing. Follow it in the next cut — and in your actual plans.</div>
+      </section>
+    </main>
+
+    <footer>
+      <span>© Roger Clark · The Clarkitect</span>
+      <span><a href="index.html" style="color:inherit">More resources →</a></span>
+    </footer>
+  </div>
+
+<script>
+function copyPrompt(){
+  const t=document.getElementById('genprompt').innerText;
+  navigator.clipboard.writeText(t).then(()=>{
+    const b=document.querySelectorAll('.copybtn')[0];
+    b.textContent='Copied';setTimeout(()=>b.textContent='Copy prompt',1600);
+  });
+}
+</script>
+</body>
+</html>
