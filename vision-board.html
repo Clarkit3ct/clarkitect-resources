@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Vision Board Maker · Clarkitect Resources</title>
+<meta name="description" content="Answer nine questions about the life you're building. Get a board in your own words, plus the prompts to turn it into a script and an image.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Khand:wght@500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f6f4f0; --ink:#161616; --muted:#6b6b6b; --line:#e0dbd2;
+    --bronze:#CA8B63; --tan:#c5a47e; --card:#fdfcfa;
+    --head:'Khand',sans-serif; --body:'Inter',sans-serif; --mono:'JetBrains Mono',monospace;
+    --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.035'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.6;-webkit-font-smoothing:antialiased}
+  body::before{content:"";position:fixed;inset:0;background-image:var(--grain);pointer-events:none;z-index:0}
+  .wrap{max-width:720px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+  .top{font-family:var(--mono);font-size:12px;letter-spacing:.08em;padding:24px 0}
+  .top a{color:var(--muted);text-decoration:none}
+  .top a:hover{color:var(--bronze)}
+  header{padding:12px 0 8px}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--bronze)}
+  h1{font-family:var(--head);font-weight:600;font-size:clamp(42px,8vw,76px);line-height:.98;text-transform:uppercase;margin-top:12px}
+  .lede{margin-top:12px;font-size:17px;color:var(--muted);max-width:56ch}
+  .teaser{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--bronze);border:1px solid var(--bronze);display:inline-block;padding:4px 10px;margin-top:16px}
+
+  /* FLOW */
+  #flow{margin:44px 0 80px;min-height:340px}
+  .dots{display:flex;gap:8px;margin-bottom:28px}
+  .dots i{width:22px;height:3px;background:var(--line);transition:background .3s}
+  .dots i.on{background:var(--bronze)}
+  .q{display:none}
+  .q.on{display:block;animation:rise .45s ease}
+  @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+  .q .qk{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--bronze);text-transform:uppercase}
+  .q h2{font-family:var(--head);font-weight:600;font-size:clamp(28px,5vw,44px);line-height:1.02;text-transform:uppercase;margin:8px 0 6px}
+  .q .hint{color:var(--muted);font-size:15px;margin-bottom:18px;max-width:52ch}
+  .q input[type=text],.q textarea{width:100%;background:var(--card);border:1px solid var(--line);padding:14px 16px;font-family:var(--body);font-size:17px;color:var(--ink);outline:none;resize:vertical}
+  .q textarea{min-height:96px}
+  .q input:focus,.q textarea:focus{border-color:var(--bronze)}
+  .chips{display:flex;flex-wrap:wrap;gap:10px}
+  .chip{font-family:var(--mono);font-size:13px;letter-spacing:.06em;border:1px solid var(--line);background:var(--card);padding:10px 16px;cursor:pointer;user-select:none;transition:all .15s}
+  .chip:hover{border-color:var(--bronze)}
+  .chip.sel{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+  .nav{display:flex;gap:12px;margin-top:24px;align-items:center}
+  .btn{font-family:var(--mono);font-size:13px;letter-spacing:.1em;padding:13px 30px;cursor:pointer;border:1px solid var(--ink);background:var(--ink);color:var(--bg);transition:all .15s}
+  .btn:hover{background:var(--bronze);border-color:var(--bronze)}
+  .btn.ghost{background:transparent;color:var(--ink)}
+  .btn.ghost:hover{color:var(--bronze);border-color:var(--bronze);background:transparent}
+  .enterhint{font-family:var(--mono);font-size:11px;color:var(--muted)}
+
+  /* BOARD */
+  #board{display:none;margin:40px 0 30px}
+  #board.on{display:block;animation:rise .6s ease}
+  .board{background:var(--card);background-image:var(--grain);border:1px solid var(--ink);padding:34px;box-shadow:6px 8px 0 rgba(22,22,22,.12)}
+  .board .bk{font-family:var(--mono);font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--bronze)}
+  .board h2{font-family:var(--head);font-weight:600;font-size:clamp(30px,6vw,52px);line-height:.98;text-transform:uppercase;margin:6px 0 4px}
+  .board .byline{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.1em;margin-bottom:22px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+  .cell{background:var(--card);padding:16px 18px}
+  .cell.w{grid-column:1/-1}
+  .cell .ck{font-family:var(--mono);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--bronze)}
+  .cell p{font-size:15.5px;line-height:1.55;margin-top:5px}
+  .cell.num p{font-family:var(--head);font-size:34px;line-height:1;font-weight:600}
+  .feels{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .feels span{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--bronze);color:var(--bronze);padding:5px 12px}
+  .board .foot{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--muted);margin-top:20px;text-transform:uppercase}
+  .after{margin:26px 0 0}
+  .after .btn{margin:0 10px 10px 0}
+  .after p.small{font-size:14px;color:var(--muted);margin-top:12px;max-width:58ch}
+  .nextsteps{border:1px dashed var(--line);padding:20px 22px;margin-top:26px;font-size:15px}
+  .nextsteps b{font-family:var(--head);text-transform:uppercase;font-size:19px;font-weight:600;display:block;margin-bottom:6px}
+  .nextsteps a{color:var(--bronze)}
+  footer{border-top:1px solid var(--line);padding:26px 0 56px;font-family:var(--mono);font-size:11.5px;color:var(--muted);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  footer a{color:inherit;text-decoration:none}
+  @media(max-width:560px){.grid{grid-template-columns:1fr}.board{padding:24px}}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="top"><a href="index.html">← CLARKITECT RESOURCES</a></nav>
+
+    <header>
+      <div class="kicker">Tool 02</div>
+      <h1>The Vision Board Maker</h1>
+      <p class="lede">Nine questions about the life you're building. Scenes and feelings, not goals. At the end you get a board in your own words, plus the prompts that turn it into a script and an image.</p>
+      <span class="teaser">TEASER · V0.5 · FULL TOOL IN THE SHOP</span>
+    </header>
+
+    <div id="flow">
+      <div class="dots" id="dots"></div>
+
+      <div class="q" data-k="name"><div class="qk">01 · You</div><h2>First name</h2><p class="hint">The board gets titled with it.</p><input type="text" placeholder="Your first name"></div>
+      <div class="q" data-k="year"><div class="qk">02 · The frame</div><h2>Pick the year</h2><p class="hint">Close enough to be real. Far enough to be built.</p><div class="chips" data-single="1"><span class="chip">3 years out</span><span class="chip">5 years out</span><span class="chip">10 years out</span></div></div>
+      <div class="q" data-k="morning"><div class="qk">03 · The scene</div><h2>It's 6 AM there</h2><p class="hint">You step outside. What do you see, hear, feel underfoot? Write it in the present tense.</p><textarea placeholder="The grass is wet. I can hear..."></textarea></div>
+      <div class="q" data-k="place"><div class="qk">04 · The place</div><h2>Name the place</h2><p class="hint">Town, land, water. Real or still imagined.</p><input type="text" placeholder="Where is this life?"></div>
+      <div class="q" data-k="hands"><div class="qk">05 · The work</div><h2>Your hands, Tuesday afternoon</h2><p class="hint">What are they actually doing? What's on the bench, the desk, the field?</p><textarea placeholder="I'm working on..."></textarea></div>
+      <div class="q" data-k="table"><div class="qk">06 · The people</div><h2>Who's at your table?</h2><p class="hint">Dinner, in that life. Name them.</p><input type="text" placeholder="At the table..."></div>
+      <div class="q" data-k="number"><div class="qk">07 · The number</div><h2>The number you once wrote down</h2><p class="hint">Exactly as you wrote it. Your number, not a bigger one.</p><input type="text" placeholder="$..."></div>
+      <div class="q" data-k="feels"><div class="qk">08 · The state</div><h2>Pick three feelings</h2><p class="hint">How it feels in the body, inside that life.</p><div class="chips" data-max="3"><span class="chip">grounded</span><span class="chip">free</span><span class="chip">abundant</span><span class="chip">calm</span><span class="chip">driven</span><span class="chip">playful</span><span class="chip">connected</span><span class="chip">strong</span><span class="chip">grateful</span><span class="chip">wonder</span></div></div>
+      <div class="q" data-k="line"><div class="qk">09 · The line</div><h2>9 PM. One line in the journal.</h2><p class="hint">What did that day deserve?</p><input type="text" placeholder="Today..."></div>
+
+      <div class="nav">
+        <button class="btn ghost" id="back" style="display:none">BACK</button>
+        <button class="btn" id="next">NEXT</button>
+        <span class="enterhint">or press Enter</span>
+      </div>
+    </div>
+
+    <div id="board">
+      <div class="board" id="boardcard">
+        <div class="bk">The Vision Board of</div>
+        <h2 id="b-name"></h2>
+        <div class="byline" id="b-year"></div>
+        <div class="grid">
+          <div class="cell w"><div class="ck">6 AM · The Scene</div><p id="b-morning"></p></div>
+          <div class="cell"><div class="ck">The Place</div><p id="b-place"></p></div>
+          <div class="cell num"><div class="ck">The Number</div><p id="b-number"></p></div>
+          <div class="cell w"><div class="ck">The Hands</div><p id="b-hands"></p></div>
+          <div class="cell w"><div class="ck">The Table</div><p id="b-table"></p></div>
+          <div class="cell w"><div class="ck">The State</div><div class="feels" id="b-feels"></div></div>
+          <div class="cell w"><div class="ck">The Line</div><p id="b-line" style="font-style:italic"></p></div>
+        </div>
+        <div class="foot">It's already done · the-clarkitect.com</div>
+      </div>
+
+      <div class="after">
+        <button class="btn" onclick="copyScript(this)">COPY YOUR SCRIPT PROMPT</button>
+        <button class="btn" onclick="copyImage(this)">COPY YOUR IMAGE PROMPT</button>
+        <button class="btn ghost" onclick="restart()">START OVER</button>
+        <p class="small">Screenshot the board and set it somewhere you'll see it. The script prompt writes your future-self profile with any AI. The image prompt renders your 6 AM scene as an ink drawing with any image model.</p>
+        <div class="nextsteps"><b>Then give it a voice</b>Take the script your AI writes and follow <a href="future-self.html">Protocol 01: The Future Self Audio</a>. Voice settings, narrator choice, and the nightly practice are all there.</div>
+      </div>
+    </div>
+
+    <footer>
+      <span>© Roger Clark · The Clarkitect</span>
+      <span><a href="index.html">MORE RESOURCES →</a></span>
+    </footer>
+  </div>
+
+<script>
+const QS=[...document.querySelectorAll('.q')], dots=document.getElementById('dots');
+QS.forEach(()=>dots.appendChild(document.createElement('i')));
+let idx=0; const A=JSON.parse(localStorage.getItem('vbm')||'{}');
+
+function paint(){
+  QS.forEach((q,i)=>q.classList.toggle('on',i===idx));
+  [...dots.children].forEach((d,i)=>d.classList.toggle('on',i<=idx));
+  document.getElementById('back').style.display=idx?'':'none';
+  document.getElementById('next').textContent=(idx===QS.length-1)?'MAKE MY BOARD':'NEXT';
+  const q=QS[idx], f=q.querySelector('input,textarea'); if(f){f.value=A[q.dataset.k]||'';setTimeout(()=>f.focus(),80)}
+  q.querySelectorAll('.chip').forEach(c=>{
+    const cur=A[q.dataset.k]||[]; c.classList.toggle('sel',Array.isArray(cur)?cur.includes(c.textContent):cur===c.textContent);
+  });
+}
+function save(){
+  const q=QS[idx], f=q.querySelector('input,textarea');
+  if(f) A[q.dataset.k]=f.value.trim();
+  localStorage.setItem('vbm',JSON.stringify(A));
+}
+document.querySelectorAll('.chips').forEach(box=>{
+  box.addEventListener('click',e=>{
+    if(!e.target.classList.contains('chip'))return;
+    const q=box.closest('.q'), k=q.dataset.k;
+    if(box.dataset.single){A[k]=e.target.textContent}
+    else{
+      let cur=A[k]||[]; const v=e.target.textContent;
+      cur=cur.includes(v)?cur.filter(x=>x!==v):(cur.length<(+box.dataset.max||99)?[...cur,v]:cur);
+      A[k]=cur;
+    }
+    localStorage.setItem('vbm',JSON.stringify(A)); paint();
+  });
+});
+document.getElementById('next').onclick=()=>{save(); if(idx<QS.length-1){idx++;paint()}else{finish()}};
+document.getElementById('back').onclick=()=>{save();idx=Math.max(0,idx-1);paint()};
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&!e.shiftKey&&document.getElementById('board').style.display!=='block'){
+    const t=e.target; if(t.tagName==='TEXTAREA'&&!e.metaKey)return;
+    e.preventDefault(); document.getElementById('next').click();
+  }
+});
+function yearNum(){const y=new Date().getFullYear();const m={'3 years out':3,'5 years out':5,'10 years out':10};return y+(m[A.year]||5)}
+function finish(){
+  document.getElementById('flow').style.display='none';
+  const b=document.getElementById('board'); b.style.display='block'; b.classList.add('on');
+  const set=(id,v)=>document.getElementById(id).textContent=v||'...';
+  set('b-name',A.name); set('b-year','DATED '+yearNum()+' · WRITTEN '+new Date().getFullYear());
+  set('b-morning',A.morning); set('b-place',A.place); set('b-hands',A.hands);
+  set('b-table',A.table); set('b-number',A.number); set('b-line',A.line);
+  const F=document.getElementById('b-feels'); F.innerHTML='';(A.feels||[]).forEach(f=>{const s=document.createElement('span');s.textContent=f;F.appendChild(s)});
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function restart(){localStorage.removeItem('vbm');location.reload()}
+function scriptPrompt(){
+  return `You are a magazine feature writer. You are writing a profile of a real person named ${A.name||'[NAME]'}, dated ${yearNum()}. Everything about their present in the piece is what they are building toward. Write it as accomplished, verified fact.
+
+THEIR MATERIAL (true, in their own words)
+The 6 AM scene: ${A.morning||''}
+The place: ${A.place||''}
+Their hands on a Tuesday afternoon: ${A.hands||''}
+At their dinner table: ${A.table||''}
+The number they once wrote down: ${A.number||''}
+How it feels in the body: ${(A.feels||[]).join(', ')}
+Their 9 PM journal line: ${A.line||''}
+
+RULES
+1. Third person, present tense. Never future tense, never conditional.
+2. Journalist register. Restrained, specific, faintly skeptical. No hype adjectives.
+3. Detail beats scale. Use their exact words and their exact number.
+4. Each scene carries one bodily feeling, reported through physical detail.
+5. Stewardship, not conquest.
+6. Include a dateline, background paragraphs, and two direct quotes from them.
+7. Open on a physical scene. Close on something small.
+8. Length: 800 words. Output plain prose only; it goes to a text-to-speech engine.
+
+Before writing, ask them 5 short questions about their real past (hometown, schooling, work, the leap, family) so the profile has verifiable history.`;
+}
+function imagePrompt(){
+  return `Intricate architectural ink drawing in sepia and warm gray on ivory paper: ${A.morning||'a quiet morning scene'}, set in ${A.place||'open land'}. A small human figure stands in the scene. Fine pen linework, faint pencil construction lines, hand-drawn imperfection, no text, wide 16:9 composition.`;
+}
+function copy(btn,text,label){navigator.clipboard.writeText(text).then(()=>{btn.textContent='COPIED';setTimeout(()=>btn.textContent=label,1500)})}
+function copyScript(b){copy(b,scriptPrompt(),'COPY YOUR SCRIPT PROMPT')}
+function copyImage(b){copy(b,imagePrompt(),'COPY YOUR IMAGE PROMPT')}
+paint();
+</script>
+</body>
+</html>
