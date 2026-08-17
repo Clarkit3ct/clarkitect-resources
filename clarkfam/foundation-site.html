@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>The Clark Conservation Foundation · Concept</title>
+<style>
+  :root{
+    --wheat:#c9a35c; --loam:#3d3226; --slate:#5c6660; --sky:#2e4a62;
+    --paper:#f2ede2; --ink:#262016; --muted:#7a7060; --line:#d8cfba;
+    --serif:Georgia,"Times New Roman",serif;
+    --sans:-apple-system,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.09'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--paper);color:var(--ink);font-family:var(--serif);line-height:1.7;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:760px;margin:0 auto;padding:0 24px}
+
+  /* HERO */
+  .hero{position:relative;min-height:88vh;display:flex;flex-direction:column;justify-content:flex-end;color:#f4efe4;
+    background:
+      linear-gradient(180deg, rgba(20,24,30,.25) 0%, rgba(20,24,30,.05) 40%, rgba(24,20,14,.72) 100%),
+      linear-gradient(175deg, #7d90a4 0%, #a48d63 38%, #c9a35c 62%, #6b5636 100%);}
+  .hero::after{content:"";position:absolute;inset:0;background-image:var(--grain);opacity:.7;pointer-events:none}
+  .hero .inner{position:relative;z-index:1;max-width:760px;margin:0 auto;width:100%;padding:0 24px 64px}
+  .photocap{font-family:var(--sans);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;opacity:.75;margin-bottom:26px}
+  .hero h1{font-size:clamp(34px,6vw,58px);font-weight:400;line-height:1.12;letter-spacing:.01em;max-width:17ch}
+  .hero .promise{margin-top:16px;font-size:19px;font-style:italic;opacity:.92;max-width:44ch}
+  .hero .est{font-family:var(--sans);font-size:11px;letter-spacing:.3em;text-transform:uppercase;margin-top:30px;opacity:.8}
+
+  /* SECTIONS */
+  section{padding:76px 0 8px}
+  .kicker{font-family:var(--sans);font-size:11.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--sky);margin-bottom:14px}
+  h2{font-size:clamp(26px,4.5vw,36px);font-weight:400;margin-bottom:22px;line-height:1.2}
+  p{margin-bottom:16px;font-size:17.5px}
+  .hr{border:none;border-top:1px solid var(--line);margin:64px auto 0;max-width:760px}
+
+  /* PHOTO PLATES (placeholders) */
+  .plate{position:relative;border-radius:2px;overflow:hidden;margin:30px 0 8px;aspect-ratio:16/8}
+  .plate::after{content:"";position:absolute;inset:0;background-image:var(--grain);opacity:.8}
+  .plate .cap{position:absolute;left:0;bottom:0;z-index:1;font-family:var(--sans);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#f4efe4;background:rgba(24,20,14,.55);padding:7px 12px}
+  .p1{background:linear-gradient(170deg,#8fa3b5 0%,#c9a35c 55%,#5c4c33 100%)}
+  .p2{background:linear-gradient(160deg,#4a5d52 0%,#5c6660 45%,#2e4a62 100%)}
+  .p3{background:linear-gradient(165deg,#a48d63 0%,#6b5636 60%,#3d3226 100%)}
+
+  /* PROGRAMS */
+  .prog{border-top:1px solid var(--line);padding:30px 0;display:grid;grid-template-columns:88px 1fr;gap:18px}
+  .prog .no{font-family:var(--sans);font-size:13px;letter-spacing:.14em;color:var(--sky);padding-top:6px}
+  .prog h3{font-size:22px;font-weight:600;margin-bottom:8px}
+  .prog p{font-size:16.5px;color:#4a4234;margin-bottom:0}
+
+  /* PILOT metric */
+  .metric{background:#fff;background-image:var(--grain);border:1px solid var(--line);border-radius:2px;padding:30px;margin:26px 0;display:flex;gap:26px;align-items:baseline;flex-wrap:wrap}
+  .metric .big{font-size:52px;line-height:1;color:var(--sky)}
+  .metric .lab{font-family:var(--sans);font-size:13px;letter-spacing:.06em;color:var(--muted);max-width:34ch}
+
+  /* LETTER */
+  .letter{background:#faf6ea;background-image:var(--grain);border:1px solid var(--line);border-radius:2px;padding:44px 40px;margin:30px 0}
+  .letter .date{font-family:var(--sans);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
+  .letter p{font-size:17px}
+  .letter .sig{margin-top:28px;font-style:italic;font-size:19px}
+  .letter .sigline{font-family:var(--sans);font-size:12px;letter-spacing:.1em;color:var(--muted);margin-top:4px}
+
+  footer{padding:56px 0 72px;text-align:center}
+  footer .mark{font-size:15px;letter-spacing:.34em;text-transform:uppercase}
+  footer .contact{font-family:var(--sans);font-size:13px;color:var(--muted);margin-top:14px}
+  @media(max-width:560px){.prog{grid-template-columns:1fr;gap:6px}.letter{padding:30px 22px}}
+</style>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="inner">
+      <div class="photocap">[ Photograph — winter wheat at dusk · Clark ground, Anthony, Kansas ]</div>
+      <h1>The Clark Conservation Foundation</h1>
+      <p class="promise">A working family's long promise to the land.</p>
+      <div class="est">Anthony, Kansas · Bonners Ferry, Idaho</div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <section>
+      <div class="kicker">The Ground We Come From</div>
+      <h2>Three brothers, one wheat farm, and a promise their grandparents made first.</h2>
+      <p>The Clark family has farmed the ground outside Anthony, Kansas for generations — the kind of small operation that taught its sons to fix what breaks, to watch the sky, and to leave a field better than they found it. The brothers went out into the world: architecture, conservation, business. The ground stayed.</p>
+      <p>The foundation is what happened when they came back to it together. Not a career for any of them — a shared practice for all of them. Their father, after forty years of lending to farm families and working his own, keeps the books.</p>
+      <p>We are not an institution. We are a family with a long memory, working between the wheat country we come from and the watersheds of North Idaho where we live and build now.</p>
+      <div class="plate p2"><div class="cap">[ Photograph — creek in cottonwoods · North Idaho ]</div></div>
+    </section>
+
+    <hr class="hr">
+
+    <section>
+      <div class="kicker">The Work</div>
+      <h2>Three programs. One direction.</h2>
+      <div class="prog">
+        <div class="no">No. 1</div>
+        <div><h3>Rewilding &amp; Watershed</h3><p>Restoring creeks, hedgerows, and native ground on working land — starting with the watersheds we live in. Conservation that farms can live with, not conservation instead of farming.</p></div>
+      </div>
+      <div class="prog">
+        <div class="no">No. 2</div>
+        <div><h3>Regeneration That Pays</h3><p>Teaching small family farms regenerative practice that holds up in the ledger, not just the pasture. Soil health, water cycles, and the business structures that let the next generation say yes to staying.</p></div>
+      </div>
+      <div class="prog">
+        <div class="no">No. 3</div>
+        <div><h3>The Pilot</h3><p>The proof is our own ground. The original Clark wheat farm is the first enrolled acreage — held in trust, farmed regeneratively, and opened to neighbors who want to see the numbers before they believe the story.</p></div>
+      </div>
+    </section>
+
+    <hr class="hr">
+
+    <section>
+      <div class="kicker">The Pilot</div>
+      <h2>We go first.</h2>
+      <p>Every practice we recommend runs on our own family ground before we teach it. Every number we publish is one we lived with.</p>
+      <div class="metric">
+        <div class="big">1</div>
+        <div class="lab">Family farm enrolled and held in trust — the first acreage in a program built to hold many.</div>
+      </div>
+      <div class="plate p3"><div class="cap">[ Photograph — hands and soil · pilot ground, first enrollment ]</div></div>
+    </section>
+
+    <hr class="hr">
+
+    <section>
+      <div class="kicker">The Yearly Letter</div>
+      <div class="letter">
+        <div class="date">From the brothers · Year one</div>
+        <p>Our grandparents' generation didn't call it conservation. They called it taking care of the place. Somewhere between their time and ours, taking care of the place became something farms felt they couldn't afford.</p>
+        <p>We started this foundation because we don't accept that math — and because we wanted one table the whole family builds at. This year we enrolled our own ground first. Next year we'll have numbers to show you, and we'll show you all of them, including the ones that didn't work.</p>
+        <p>Know what you have. Know where you are. That's where we start.</p>
+        <p class="sig">— The Clark Brothers</p>
+        <p class="sigline">ANTHONY, KANSAS</p>
+      </div>
+    </section>
+
+    <footer>
+      <div class="mark">Clark Conservation</div>
+      <div class="contact">For correspondence: hello@clarkconservation.org &nbsp;·&nbsp; A letter, once a year. Nothing else.</div>
+    </footer>
+  </div>
+
+</body>
+</html>
