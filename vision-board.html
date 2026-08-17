@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Vision Board Maker · Clarkitect Resources</title>
-<meta name="description" content="Answer nine questions about the life you're building. Get a board in your own words, plus the prompts to turn it into a script and an image.">
+<meta name="description" content="Ten questions about the life you're building. You get a one-page plan for it, in your own words, plus the exact prompts to turn it into a script, an image, and a nightly audio practice.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Khand:wght@500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -18,7 +18,7 @@
   *{box-sizing:border-box;margin:0;padding:0}
   body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.6;-webkit-font-smoothing:antialiased}
   body::before{content:"";position:fixed;inset:0;background-image:var(--grain);pointer-events:none;z-index:0}
-  .wrap{max-width:720px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+  .wrap{max-width:760px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
   .top{font-family:var(--mono);font-size:12px;letter-spacing:.08em;padding:24px 0}
   .top a{color:var(--muted);text-decoration:none}
   .top a:hover{color:var(--bronze)}
@@ -26,37 +26,67 @@
   .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--bronze)}
   h1{font-family:var(--head);font-weight:600;font-size:clamp(42px,8vw,76px);line-height:.98;text-transform:uppercase;margin-top:12px}
   .lede{margin-top:12px;font-size:17px;color:var(--muted);max-width:56ch}
-  .teaser{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--bronze);border:1px solid var(--bronze);display:inline-block;padding:4px 10px;margin-top:16px}
+
+  /* INTRO */
+  #intro{margin:36px 0 80px}
+  .arc{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:26px 0}
+  .arc div{border:1px solid var(--line);background:var(--card);padding:18px}
+  .arc .n{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--bronze)}
+  .arc h3{font-family:var(--head);font-weight:600;font-size:23px;text-transform:uppercase;margin:6px 0 4px;line-height:1.05}
+  .arc p{font-size:14.5px;color:var(--muted)}
+  .whatis{border-left:3px solid var(--bronze);background:var(--card);padding:20px 24px;margin:26px 0;font-size:16.5px}
+  .whatis b{font-family:var(--head);text-transform:uppercase;font-size:21px;font-weight:600;display:block;margin-bottom:6px}
+  .facts{display:flex;gap:26px;flex-wrap:wrap;font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;color:var(--muted);margin:20px 0 6px}
+  .facts b{color:var(--ink)}
+  .samplewrap{margin:30px 0}
+  .samplewrap>summary{cursor:pointer;font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--bronze);border:1px solid var(--line);background:var(--card);padding:14px 18px;list-style:none}
+  .samplewrap>summary::-webkit-details-marker{display:none}
+  .samplewrap>summary:hover{border-color:var(--bronze)}
+  .videoslot{border:1px dashed var(--line);background:var(--card);padding:26px;margin:26px 0;text-align:center}
+  .videoslot .vk{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--bronze)}
+  .videoslot p{color:var(--muted);font-size:14.5px;margin-top:8px}
 
   /* FLOW */
-  #flow{margin:44px 0 80px;min-height:340px}
-  .dots{display:flex;gap:8px;margin-bottom:28px}
-  .dots i{width:22px;height:3px;background:var(--line);transition:background .3s}
+  #flow{display:none;margin:34px 0 80px;min-height:360px}
+  #flow.on{display:block}
+  .dots{display:flex;gap:6px;margin-bottom:26px;flex-wrap:wrap}
+  .dots i{width:20px;height:3px;background:var(--line);transition:background .3s}
   .dots i.on{background:var(--bronze)}
   .q{display:none}
   .q.on{display:block;animation:rise .45s ease}
   @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
   .q .qk{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--bronze);text-transform:uppercase}
   .q h2{font-family:var(--head);font-weight:600;font-size:clamp(28px,5vw,44px);line-height:1.02;text-transform:uppercase;margin:8px 0 6px}
-  .q .hint{color:var(--muted);font-size:15px;margin-bottom:18px;max-width:52ch}
+  .q .hint{color:var(--muted);font-size:15px;margin-bottom:8px;max-width:54ch}
+  .q .hint em{color:var(--bronze);font-style:italic}
+  .eg{font-size:14.5px;color:#8a8378;background:var(--card);border:1px solid var(--line);border-left:2px solid var(--tan);padding:10px 14px;margin-bottom:16px;max-width:56ch}
+  .eg b{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--tan);text-transform:uppercase;display:block;margin-bottom:3px}
   .q input[type=text],.q textarea{width:100%;background:var(--card);border:1px solid var(--line);padding:14px 16px;font-family:var(--body);font-size:17px;color:var(--ink);outline:none;resize:vertical}
   .q textarea{min-height:96px}
   .q input:focus,.q textarea:focus{border-color:var(--bronze)}
   .chips{display:flex;flex-wrap:wrap;gap:10px}
-  .chip{font-family:var(--mono);font-size:13px;letter-spacing:.06em;border:1px solid var(--line);background:var(--card);padding:10px 16px;cursor:pointer;user-select:none;transition:all .15s}
+  .chip{font-family:var(--body);font-size:14.5px;border:1px solid var(--line);background:var(--card);padding:12px 16px;cursor:pointer;user-select:none;transition:all .15s;max-width:100%}
+  .chip small{display:block;font-size:12.5px;color:var(--muted);margin-top:2px}
   .chip:hover{border-color:var(--bronze)}
   .chip.sel{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-  .nav{display:flex;gap:12px;margin-top:24px;align-items:center}
+  .chip.sel small{color:#c9c1b4}
+  .chips.tight .chip{padding:9px 15px;font-family:var(--mono);font-size:13px;letter-spacing:.04em}
+  .nav{display:flex;gap:12px;margin-top:26px;align-items:center;flex-wrap:wrap}
   .btn{font-family:var(--mono);font-size:13px;letter-spacing:.1em;padding:13px 30px;cursor:pointer;border:1px solid var(--ink);background:var(--ink);color:var(--bg);transition:all .15s}
   .btn:hover{background:var(--bronze);border-color:var(--bronze)}
   .btn.ghost{background:transparent;color:var(--ink)}
   .btn.ghost:hover{color:var(--bronze);border-color:var(--bronze);background:transparent}
   .enterhint{font-family:var(--mono);font-size:11px;color:var(--muted)}
 
-  /* BOARD */
-  #board{display:none;margin:40px 0 30px}
+  /* SHEET */
+  #board{display:none;margin:34px 0 30px}
   #board.on{display:block;animation:rise .6s ease}
   .board{background:var(--card);background-image:var(--grain);border:1px solid var(--ink);padding:34px;box-shadow:6px 8px 0 rgba(22,22,22,.12)}
+  .tblock{display:grid;grid-template-columns:1fr 1fr 1fr;border:1px solid var(--ink);margin-bottom:22px}
+  .tblock>div{padding:8px 12px;border-right:1px solid var(--ink)}
+  .tblock>div:last-child{border-right:none}
+  .tblock .tk{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+  .tblock .tv{display:block;font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);margin-top:2px}
   .board .bk{font-family:var(--mono);font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--bronze)}
   .board h2{font-family:var(--head);font-weight:600;font-size:clamp(30px,6vw,52px);line-height:.98;text-transform:uppercase;margin:6px 0 4px}
   .board .byline{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.1em;margin-bottom:22px}
@@ -69,33 +99,36 @@
   .feels{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
   .feels span{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--bronze);color:var(--bronze);padding:5px 12px}
   .board .foot{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--muted);margin-top:20px;text-transform:uppercase}
+
   .after{margin:26px 0 0}
   .after .btn{margin:0 10px 10px 0}
-  .after p.small{font-size:14px;color:var(--muted);margin-top:12px;max-width:58ch}
-  .nextsteps{border:1px dashed var(--line);padding:20px 22px;margin-top:26px;font-size:15px}
-  .nextsteps b{font-family:var(--head);text-transform:uppercase;font-size:19px;font-weight:600;display:block;margin-bottom:6px}
-  .nextsteps a{color:var(--bronze)}
-  .tblock{display:grid;grid-template-columns:1fr 1fr 1fr;border:1px solid var(--ink);margin-bottom:22px}
-  .tblock>div{padding:8px 12px;border-right:1px solid var(--ink)}
-  .tblock>div:last-child{border-right:none}
-  .tblock .tk{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
-  .tblock .tv{display:block;font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);margin-top:2px}
+  .promptbox{background:#1c1a17;color:#efece6;padding:20px;font-family:var(--mono);font-size:12.5px;line-height:1.65;white-space:pre-wrap;overflow-x:auto;margin:10px 0 4px;border-left:3px solid var(--bronze);max-height:280px;overflow-y:auto;user-select:all}
+  .pblock{margin:22px 0}
+  .pblock .pk{font-family:var(--head);text-transform:uppercase;font-size:22px;font-weight:600;margin-bottom:2px}
+  .pblock .pd{font-size:14.5px;color:var(--muted);margin-bottom:8px}
+  .copyrow{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .copybtn{font-family:var(--mono);font-size:12px;letter-spacing:.08em;background:transparent;color:var(--ink);border:1px solid var(--line);padding:9px 16px;cursor:pointer}
+  .copybtn:hover{border-color:var(--bronze);color:var(--bronze)}
+  .copynote{font-family:var(--mono);font-size:10.5px;color:var(--muted)}
   .kit{border:1px solid var(--line);background:var(--card);padding:24px 26px;margin-top:24px}
-  .kit b{font-family:var(--head);text-transform:uppercase;font-size:24px;font-weight:600;display:block;margin-bottom:12px}
+  .kit b.kh{font-family:var(--head);text-transform:uppercase;font-size:24px;font-weight:600;display:block;margin-bottom:12px}
   .kit .ki{display:flex;gap:14px;font-size:15px;color:#3d3a35;margin-bottom:12px}
   .kit .ki span{font-family:var(--mono);font-size:12px;color:var(--bronze);padding-top:2px}
   .kit a{color:var(--bronze)}
-  .q .hint em{color:var(--bronze);font-style:italic}
+  .savelink{border:1px solid var(--line);background:var(--card);padding:16px 18px;margin-top:22px;font-size:14.5px;color:var(--muted)}
+  .savelink b{color:var(--ink);font-family:var(--head);text-transform:uppercase;font-size:18px;display:block;margin-bottom:4px}
+  .savelink input{width:100%;margin-top:8px;font-family:var(--mono);font-size:11.5px;padding:9px 12px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+
+  footer{border-top:1px solid var(--line);padding:26px 0 56px;font-family:var(--mono);font-size:11.5px;color:var(--muted);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  footer a{color:inherit;text-decoration:none}
   @media print{
     body::before{display:none}
-    .top,header,#flow,.after,footer{display:none!important}
+    .top,header,#intro,#flow,.after,footer{display:none!important}
     #board{display:block!important;margin:0}
     .board{box-shadow:none;border:2px solid #000;padding:24px}
   }
-  @media(max-width:520px){.tblock{grid-template-columns:1fr}.tblock>div{border-right:none;border-bottom:1px solid var(--ink)}.tblock>div:last-child{border-bottom:none}}
-  footer{border-top:1px solid var(--line);padding:26px 0 56px;font-family:var(--mono);font-size:11.5px;color:var(--muted);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-  footer a{color:inherit;text-decoration:none}
-  @media(max-width:560px){.grid{grid-template-columns:1fr}.board{padding:24px}}
+  @media(max-width:620px){.arc{grid-template-columns:1fr}}
+  @media(max-width:520px){.tblock{grid-template-columns:1fr}.tblock>div{border-right:none;border-bottom:1px solid var(--ink)}.tblock>div:last-child{border-bottom:none}.grid{grid-template-columns:1fr}.board{padding:24px}}
 </style>
 </head>
 <body>
@@ -105,23 +138,87 @@
     <header>
       <div class="kicker">Tool 02</div>
       <h1>The Vision Board Maker</h1>
-      <p class="lede">Ten questions about the life you're building. Scenes and feelings, not goals. At the end you get a drawing set for that life, in your own words, plus the prompts and instructions that turn it into a script, an image, and a nightly practice. The whole thing costs nothing.</p>
-      <span class="teaser">TEASER · V0.5 · FULL TOOL IN THE SHOP</span>
+      <p class="lede">Ten questions about the life you're building. You get a one-page plan for it, written in your own words, plus the exact prompts that turn it into a script, an image, and a nightly audio practice.</p>
     </header>
+
+    <div id="intro">
+      <div class="whatis">
+        <b>What this actually makes</b>
+        Architects don't make mood boards. They make drawing sets: the documents you build from, posted where the builders can see them. This makes one of those for your life. One page, your words, no stock photos of somebody else's boat.
+      </div>
+
+      <div class="arc">
+        <div><div class="n">STEP 01</div><h3>Answer</h3><p>Ten short questions, one at a time. About ten minutes. Scenes and feelings, not goals.</p></div>
+        <div><div class="n">STEP 02</div><h3>Get your sheet</h3><p>A one-page plan you can print, save as a PDF, or bookmark with its own link.</p></div>
+        <div><div class="n">STEP 03</div><h3>Make it audible</h3><p>Copy your two prompts. Any AI writes the script. A free voice tool reads it. You listen nightly.</p></div>
+      </div>
+
+      <div class="facts">
+        <span><b>10</b> QUESTIONS</span><span><b>~10</b> MINUTES</span><span><b>$0</b> START TO FINISH</span><span><b>NO</b> ACCOUNT</span>
+      </div>
+
+      <details class="samplewrap">
+        <summary>SEE A FINISHED EXAMPLE FIRST ↓</summary>
+        <div style="margin-top:16px">
+          <div class="board">
+            <div class="tblock">
+              <div><span class="tk">Sheet</span><span class="tv">A-1 · THE LIFE PLAN</span></div>
+              <div><span class="tk">Drawn by</span><span class="tv">JESS · THE MAKER</span></div>
+              <div><span class="tk">Status</span><span class="tv">ISSUED FOR CONSTRUCTION</span></div>
+            </div>
+            <div class="bk">The Vision Board of</div>
+            <h2>Jess</h2>
+            <div class="byline">DATED 2031 · WRITTEN 2026</div>
+            <div class="grid">
+              <div class="cell w"><div class="ck">6 AM · The Scene</div><p>The grass is wet and I can hear the creek past the garden. Steam coming off the coffee. Nobody needs anything from me for another hour.</p></div>
+              <div class="cell"><div class="ck">The Place</div><p>A timber house outside Sandpoint, Idaho</p></div>
+              <div class="cell num"><div class="ck">The Number</div><p>$1,200,000</p></div>
+              <div class="cell w"><div class="ck">The Hands</div><p>Sanding a cedar bench for the sauna, with the sketch for the next one pinned above the vise</p></div>
+              <div class="cell w"><div class="ck">The Table</div><p>Sam, the two kids, and whoever wandered over from next door</p></div>
+              <div class="cell w"><div class="ck">The State</div><div class="feels"><span>grounded</span><span>playful</span><span>grateful</span></div></div>
+              <div class="cell w"><div class="ck">The Line</div><p style="font-style:italic">Today was slow in the best way.</p></div>
+            </div>
+            <div class="foot">It's already done · the-clarkitect.com</div>
+          </div>
+        </div>
+      </details>
+
+      <div class="videoslot">
+        <div class="vk">WALKTHROUGH</div>
+        <p>A short video walkthrough goes here.</p>
+      </div>
+
+      <button class="btn" onclick="begin()">START · 10 QUESTIONS</button>
+    </div>
 
     <div id="flow">
       <div class="dots" id="dots"></div>
 
-      <div class="q" data-k="vessel"><div class="qk">00 · The Vessel</div><h2>What's your style of growth?</h2><p class="hint">Not who you are. The vehicle you're choosing for this build. It gets stamped on the title block.</p><div class="chips" data-single="1"><span class="chip">The Architect</span><span class="chip">The Flowwalker</span><span class="chip">The Operator</span><span class="chip">The Spark</span><span class="chip">The Analyst</span></div></div>
-      <div class="q" data-k="name"><div class="qk">01 · You</div><h2>First name</h2><p class="hint">The drawing set gets titled with it.</p><input type="text" placeholder="Your first name"></div>
-      <div class="q" data-k="year"><div class="qk">02 · The frame</div><h2>Pick the year</h2><p class="hint">Close enough to be real. Far enough to be built.</p><div class="chips" data-single="1"><span class="chip">3 years out</span><span class="chip">5 years out</span><span class="chip">10 years out</span></div></div>
-      <div class="q" data-k="morning"><div class="qk">03 · The scene</div><h2>It's 6 AM there</h2><p class="hint">You step outside. What do you see, hear, feel underfoot? Write it in the present tense. <em>Clarity asks: what's the first sound?</em></p><textarea placeholder="The grass is wet. I can hear..."></textarea></div>
-      <div class="q" data-k="place"><div class="qk">04 · The place</div><h2>Name the place</h2><p class="hint">Town, land, water. Real or still imagined.</p><input type="text" placeholder="Where is this life?"></div>
-      <div class="q" data-k="hands"><div class="qk">05 · The work</div><h2>Your hands, Tuesday afternoon</h2><p class="hint">What are they actually doing? What's on the bench, the desk, the field?</p><textarea placeholder="I'm working on..."></textarea></div>
-      <div class="q" data-k="table"><div class="qk">06 · The people</div><h2>Who's at your table?</h2><p class="hint">Dinner, in that life. Name them.</p><input type="text" placeholder="At the table..."></div>
-      <div class="q" data-k="number"><div class="qk">07 · The number</div><h2>The number you once wrote down</h2><p class="hint">Exactly as you wrote it. Your number, not a bigger one. <em>Drive says: the path hasn't moved. You have.</em></p><input type="text" placeholder="$..."></div>
-      <div class="q" data-k="feels"><div class="qk">08 · The state</div><h2>Pick three feelings</h2><p class="hint">How it feels in the body, inside that life. <em>Presence says: breathe once before you choose.</em></p><div class="chips" data-max="3"><span class="chip">grounded</span><span class="chip">free</span><span class="chip">abundant</span><span class="chip">calm</span><span class="chip">driven</span><span class="chip">playful</span><span class="chip">connected</span><span class="chip">strong</span><span class="chip">grateful</span><span class="chip">wonder</span></div></div>
-      <div class="q" data-k="line"><div class="qk">09 · The line</div><h2>9 PM. One line in the journal.</h2><p class="hint">What did that day deserve?</p><input type="text" placeholder="Today..."></div>
+      <div class="q" data-k="name"><div class="qk">01 · You</div><h2>First name</h2><p class="hint">Your sheet gets titled with it.</p><div class="eg"><b>Example</b>Jess</div><input type="text" placeholder="Your first name"></div>
+
+      <div class="q" data-k="year"><div class="qk">02 · The frame</div><h2>How far ahead?</h2><p class="hint">Close enough to feel real. Far enough to be built.</p><div class="eg"><b>Example</b>Jess picked 5 years, so her sheet is dated 2031.</div><div class="chips tight" data-single="1"><span class="chip">3 years out</span><span class="chip">5 years out</span><span class="chip">10 years out</span></div></div>
+
+      <div class="q" data-k="morning"><div class="qk">03 · The scene</div><h2>It's 6 AM there</h2><p class="hint">You step outside. What do you see, hear, feel underfoot? Write it as if it's happening now. <em>What's the first sound?</em></p><div class="eg"><b>Example</b>The grass is wet and I can hear the creek past the garden. Steam coming off the coffee. Nobody needs anything from me for another hour.</div><textarea placeholder="It's early. I step outside and..."></textarea></div>
+
+      <div class="q" data-k="place"><div class="qk">04 · The place</div><h2>Where is this?</h2><p class="hint">Town, land, water. Real place or one you can picture.</p><div class="eg"><b>Example</b>A timber house outside Sandpoint, Idaho</div><input type="text" placeholder="Where this life happens"></div>
+
+      <div class="q" data-k="hands"><div class="qk">05 · The work</div><h2>Your hands, Tuesday afternoon</h2><p class="hint">Not your job title. What are your hands actually doing?</p><div class="eg"><b>Example</b>Sanding a cedar bench for the sauna, with the sketch for the next one pinned above the vise</div><textarea placeholder="I'm working on..."></textarea></div>
+
+      <div class="q" data-k="table"><div class="qk">06 · The people</div><h2>Who's at your table?</h2><p class="hint">Dinner, in that life. Use their real names.</p><div class="eg"><b>Example</b>Sam, the two kids, and whoever wandered over from next door</div><input type="text" placeholder="At the table..."></div>
+
+      <div class="q" data-k="number"><div class="qk">07 · The number</div><h2>Write the number</h2><p class="hint">Income, savings, or the figure you've quietly carried for years. <em>Use your real number, not a bigger one. The believable one is the one that works.</em></p><div class="eg"><b>Example</b>$1,200,000</div><input type="text" placeholder="$"></div>
+
+      <div class="q" data-k="feels"><div class="qk">08 · The state</div><h2>Pick three feelings</h2><p class="hint">How it feels in your body inside that life. <em>Breathe once before you choose.</em></p><div class="eg"><b>Example</b>Jess picked grounded, playful, grateful.</div><div class="chips tight" data-max="3"><span class="chip">grounded</span><span class="chip">free</span><span class="chip">abundant</span><span class="chip">calm</span><span class="chip">driven</span><span class="chip">playful</span><span class="chip">connected</span><span class="chip">strong</span><span class="chip">grateful</span><span class="chip">wonder</span></div></div>
+
+      <div class="q" data-k="line"><div class="qk">09 · The line</div><h2>9 PM. One line in the journal.</h2><p class="hint">What did that day deserve? One sentence.</p><div class="eg"><b>Example</b>Today was slow in the best way.</div><input type="text" placeholder="Today..."></div>
+
+      <div class="q" data-k="vessel"><div class="qk">10 · How you build</div><h2>Which one is more you?</h2><p class="hint">Everybody builds differently. This gets stamped on your sheet, the way a drawing is signed by whoever drew it. Skip it if none fit.</p><div class="chips" data-single="1">
+        <span class="chip">The Architect<small>You want the whole plan before you start.</small></span>
+        <span class="chip">The Maker<small>You figure it out by building the thing.</small></span>
+        <span class="chip">The Operator<small>You win with systems and steady cadence.</small></span>
+        <span class="chip">The Spark<small>You move fast on instinct and momentum.</small></span>
+        <span class="chip">The Student<small>You go deep, understand it, then act.</small></span>
+      </div></div>
 
       <div class="nav">
         <button class="btn ghost" id="back" style="display:none">BACK</button>
@@ -154,18 +251,36 @@
 
       <div class="after">
         <button class="btn" onclick="window.print()">PRINT / SAVE AS PDF</button>
-        <button class="btn" onclick="copyScript(this)">COPY YOUR SCRIPT PROMPT</button>
-        <button class="btn" onclick="copyImage(this)">COPY YOUR IMAGE PROMPT</button>
         <button class="btn ghost" onclick="restart()">START OVER</button>
 
+        <div class="savelink">
+          <b>Your sheet has its own link</b>
+          Bookmark it or send it to yourself. Everything is stored inside the link, not on a server.
+          <input id="permalink" readonly onclick="this.select()">
+        </div>
+
+        <div class="pblock">
+          <div class="pk">Prompt 1 · Your script</div>
+          <div class="pd">Paste this into any AI. It will ask you a few questions about your real past, then write the profile that becomes your audio.</div>
+          <div class="promptbox" id="p-script"></div>
+          <div class="copyrow"><button class="copybtn" onclick="doCopy('p-script',this)">COPY</button><span class="copynote">or tap the text to select it all</span></div>
+        </div>
+
+        <div class="pblock">
+          <div class="pk">Prompt 2 · Your image</div>
+          <div class="pd">Paste into any image generator to render your 6 AM scene as an ink drawing.</div>
+          <div class="promptbox" id="p-image"></div>
+          <div class="copyrow"><button class="copybtn" onclick="doCopy('p-image',this)">COPY</button><span class="copynote">or tap the text to select it all</span></div>
+        </div>
+
         <div class="kit">
-          <b>The Practice Kit</b>
-          <p class="ki"><span>01</span>Print this sheet, or save it as a PDF, and put it where the day starts: the desk, the mirror, the shop wall. It's a drawing set, and drawings are meant to be posted where the builders can see them.</p>
-          <p class="ki"><span>02</span>Copy your script prompt into any AI. It will ask you five short questions about your real past, then write an 800-word profile of your future life, reported like a news story. Read it once. Fix anything that isn't true to you, especially the quotes.</p>
+          <b class="kh">The Practice Kit</b>
+          <p class="ki"><span>01</span>Print this sheet, or save it as a PDF, and put it where the day starts. The desk, the mirror, the shop wall. Drawings belong where the builders can see them.</p>
+          <p class="ki"><span>02</span>Copy Prompt 1 into any AI. Answer its questions about your real past. It writes an 800-word profile of your future life, reported like a news story. Read it once and fix anything that isn't true to you, especially the quotes.</p>
           <p class="ki"><span>03</span>Make a free ElevenLabs account. Text to Speech. Paste your script. Pick a calm documentary narrator, never your own voice, and test three before you choose. Model: Multilingual v2. Stability 55. Style near zero. Speed 0.95. Download the MP3. The free tier covers a five-minute track.</p>
-          <p class="ki"><span>04</span>Put it on your phone and listen every night for 30 days. In bed, low volume. Three slow breaths before you press play, then listen from inside the life, not outside it. Don't re-cut it for 30 days; repetition is the practice, not iteration.</p>
-          <p class="ki"><span>05</span>Your image prompt renders the 6 AM scene as an ink drawing in any image model. Set it as a wallpaper, or print it next to the sheet.</p>
-          <p class="ki"><span>06</span>Watch what makes you tear up, in the script or in your own answers. That line is pointing at truth worth chasing. Full craft notes live in <a href="future-self.html">Protocol 01: The Future Self Audio</a>.</p>
+          <p class="ki"><span>04</span>Put it on your phone and listen every night for 30 nights. In bed, low volume. Three slow breaths before you press play, then listen from inside the life, not outside it. Don't re-cut it for 30 days. Repetition is the practice.</p>
+          <p class="ki"><span>05</span>Prompt 2 renders your 6 AM scene. Set it as a wallpaper, or print it beside the sheet.</p>
+          <p class="ki"><span>06</span>Watch what makes you tear up, in the script or in your own answers. That line is pointing at something true. Full craft notes are in <a href="future-self.html">Protocol 01: The Future Self Audio</a>.</p>
         </div>
       </div>
     </div>
@@ -179,16 +294,26 @@
 <script>
 const QS=[...document.querySelectorAll('.q')], dots=document.getElementById('dots');
 QS.forEach(()=>dots.appendChild(document.createElement('i')));
-let idx=0; const A=JSON.parse(localStorage.getItem('vbm')||'{}');
+let idx=0;
+let A={};
+try{ A=JSON.parse(localStorage.getItem('vbm')||'{}') }catch(e){ A={} }
+
+// restore from permalink if present
+if(location.hash.length>1){
+  try{ A=JSON.parse(decodeURIComponent(escape(atob(location.hash.slice(1))))); }catch(e){}
+}
+
+function begin(){ document.getElementById('intro').style.display='none'; document.getElementById('flow').classList.add('on'); paint(); window.scrollTo({top:0,behavior:'smooth'}) }
 
 function paint(){
   QS.forEach((q,i)=>q.classList.toggle('on',i===idx));
   [...dots.children].forEach((d,i)=>d.classList.toggle('on',i<=idx));
   document.getElementById('back').style.display=idx?'':'none';
-  document.getElementById('next').textContent=(idx===QS.length-1)?'MAKE MY BOARD':'NEXT';
+  document.getElementById('next').textContent=(idx===QS.length-1)?'MAKE MY SHEET':'NEXT';
   const q=QS[idx], f=q.querySelector('input,textarea'); if(f){f.value=A[q.dataset.k]||'';setTimeout(()=>f.focus(),80)}
   q.querySelectorAll('.chip').forEach(c=>{
-    const cur=A[q.dataset.k]||[]; c.classList.toggle('sel',Array.isArray(cur)?cur.includes(c.textContent):cur===c.textContent);
+    const cur=A[q.dataset.k]||[], v=c.childNodes[0].textContent.trim();
+    c.classList.toggle('sel',Array.isArray(cur)?cur.includes(v):cur===v);
   });
 }
 function save(){
@@ -198,70 +323,96 @@ function save(){
 }
 document.querySelectorAll('.chips').forEach(box=>{
   box.addEventListener('click',e=>{
-    if(!e.target.classList.contains('chip'))return;
-    const q=box.closest('.q'), k=q.dataset.k;
-    if(box.dataset.single){A[k]=e.target.textContent}
+    const c=e.target.closest('.chip'); if(!c)return;
+    const q=box.closest('.q'), k=q.dataset.k, v=c.childNodes[0].textContent.trim();
+    if(box.dataset.single){ A[k] = (A[k]===v ? '' : v) }
     else{
-      let cur=A[k]||[]; const v=e.target.textContent;
+      let cur=A[k]||[];
       cur=cur.includes(v)?cur.filter(x=>x!==v):(cur.length<(+box.dataset.max||99)?[...cur,v]:cur);
       A[k]=cur;
     }
     localStorage.setItem('vbm',JSON.stringify(A)); paint();
   });
 });
-document.getElementById('next').onclick=()=>{save(); if(idx<QS.length-1){idx++;paint()}else{finish()}};
-document.getElementById('back').onclick=()=>{save();idx=Math.max(0,idx-1);paint()};
+document.getElementById('next').onclick=()=>{save(); if(idx<QS.length-1){idx++;paint();window.scrollTo({top:0,behavior:'smooth'})}else{finish()}};
+document.getElementById('back').onclick=()=>{save();idx=Math.max(0,idx-1);paint();window.scrollTo({top:0,behavior:'smooth'})};
 document.addEventListener('keydown',e=>{
-  if(e.key==='Enter'&&!e.shiftKey&&document.getElementById('board').style.display!=='block'){
-    const t=e.target; if(t.tagName==='TEXTAREA'&&!e.metaKey)return;
-    e.preventDefault(); document.getElementById('next').click();
-  }
+  if(e.key!=='Enter'||e.shiftKey) return;
+  if(!document.getElementById('flow').classList.contains('on')) return;
+  if(e.target.tagName==='TEXTAREA'&&!e.metaKey&&!e.ctrlKey) return;
+  e.preventDefault(); document.getElementById('next').click();
 });
+
 function yearNum(){const y=new Date().getFullYear();const m={'3 years out':3,'5 years out':5,'10 years out':10};return y+(m[A.year]||5)}
+
 function finish(){
+  document.getElementById('flow').classList.remove('on');
   document.getElementById('flow').style.display='none';
   const b=document.getElementById('board'); b.style.display='block'; b.classList.add('on');
-  const set=(id,v)=>document.getElementById(id).textContent=v||'...';
+  const set=(id,v)=>document.getElementById(id).textContent=v||'—';
   set('b-name',A.name); set('b-year','DATED '+yearNum()+' · WRITTEN '+new Date().getFullYear());
   set('b-vessel',(A.name||'')+(A.vessel?' · '+A.vessel:''));
   set('b-morning',A.morning); set('b-place',A.place); set('b-hands',A.hands);
   set('b-table',A.table); set('b-number',A.number); set('b-line',A.line);
   const F=document.getElementById('b-feels'); F.innerHTML='';(A.feels||[]).forEach(f=>{const s=document.createElement('span');s.textContent=f;F.appendChild(s)});
+  document.getElementById('p-script').textContent=scriptPrompt();
+  document.getElementById('p-image').textContent=imagePrompt();
+  try{
+    const hash=btoa(unescape(encodeURIComponent(JSON.stringify(A))));
+    document.getElementById('permalink').value=location.origin+location.pathname+'#'+hash;
+    history.replaceState(null,'','#'+hash);
+  }catch(e){ document.getElementById('permalink').value=location.href }
   window.scrollTo({top:0,behavior:'smooth'});
 }
-function restart(){localStorage.removeItem('vbm');location.reload()}
+function restart(){localStorage.removeItem('vbm');location.hash='';location.reload()}
+
 function scriptPrompt(){
   return `You are a magazine feature writer. You are writing a profile of a real person named ${A.name||'[NAME]'}, dated ${yearNum()}. Everything about their present in the piece is what they are building toward. Write it as accomplished, verified fact.
 
-THEIR MATERIAL (true, in their own words)
+THEIR MATERIAL, IN THEIR OWN WORDS
 The 6 AM scene: ${A.morning||''}
 The place: ${A.place||''}
 Their hands on a Tuesday afternoon: ${A.hands||''}
 At their dinner table: ${A.table||''}
-The number they once wrote down: ${A.number||''}
+The number they wrote down: ${A.number||''}
 How it feels in the body: ${(A.feels||[]).join(', ')}
-Their chosen style of growth: ${A.vessel||''}
-Their 9 PM journal line: ${A.line||''}
+Their 9 PM journal line: ${A.line||''}${A.vessel?'\nHow they build: '+A.vessel:''}
 
 RULES
 1. Third person, present tense. Never future tense, never conditional.
-2. Journalist register. Restrained, specific, faintly skeptical. No hype adjectives.
+2. Journalist register. Restrained, specific, faintly skeptical. No hype adjectives, no inspirational language.
 3. Detail beats scale. Use their exact words and their exact number.
-4. Each scene carries one bodily feeling, reported through physical detail.
-5. Stewardship, not conquest.
+4. Each scene carries one bodily feeling, reported through physical detail, never by naming the emotion.
+5. Stewardship, not conquest. They belong to their work and their place.
 6. Include a dateline, background paragraphs, and two direct quotes from them.
 7. Open on a physical scene. Close on something small.
-8. Length: 800 words. Output plain prose only; it goes to a text-to-speech engine.
+8. Length: 800 words. Output plain prose only, no headers or bullets. It goes to a text-to-speech engine.
 
-Before writing, ask them 5 short questions about their real past (hometown, schooling, work, the leap, family) so the profile has verifiable history.`;
+FIRST, before writing, ask me five short questions about my real past: hometown, schooling, work history, the biggest leap I have taken, and my family. Wait for my answers. The profile needs true history to feel like reporting.`;
 }
 function imagePrompt(){
   return `Intricate architectural ink drawing in sepia and warm gray on ivory paper: ${A.morning||'a quiet morning scene'}, set in ${A.place||'open land'}. A small human figure stands in the scene. Fine pen linework, faint pencil construction lines, hand-drawn imperfection, no text, wide 16:9 composition.`;
 }
-function copy(btn,text,label){navigator.clipboard.writeText(text).then(()=>{btn.textContent='COPIED';setTimeout(()=>btn.textContent=label,1500)})}
-function copyScript(b){copy(b,scriptPrompt(),'COPY YOUR SCRIPT PROMPT')}
-function copyImage(b){copy(b,imagePrompt(),'COPY YOUR IMAGE PROMPT')}
-paint();
+function doCopy(id,btn){
+  const el=document.getElementById(id), text=el.textContent, label=btn.textContent;
+  const ok=()=>{btn.textContent='COPIED';setTimeout(()=>btn.textContent=label,1600)};
+  const fail=()=>{
+    const r=document.createRange(); r.selectNodeContents(el);
+    const s=window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    let done=false; try{ done=document.execCommand('copy') }catch(e){}
+    btn.textContent = done ? 'COPIED' : 'SELECTED, PRESS COPY';
+    setTimeout(()=>btn.textContent=label,2600);
+  };
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(ok).catch(fail);
+  } else { fail() }
+}
+
+// deep-link straight to a finished sheet
+if(location.hash.length>1 && A && A.name){
+  document.getElementById('intro').style.display='none';
+  finish();
+}
 </script>
 </body>
 </html>
