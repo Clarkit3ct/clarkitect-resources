@@ -1,5 +1,14 @@
 {
   "redirects": [
     { "source": "/clarkfam/audio/:file", "destination": "/audios/audio/:file", "permanent": true }
+  ],
+  "headers": [
+    {
+      "source": "/audios/audio/(.*)",
+      "headers": [
+        { "key": "Content-Disposition", "value": "inline" },
+        { "key": "Cache-Control", "value": "public, max-age=86400" }
+      ]
+    }
   ]
 }
