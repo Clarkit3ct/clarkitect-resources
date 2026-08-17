@@ -4,101 +4,96 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Clarkitect Resources</title>
-<meta name="description" content="Tools and protocols for designing a life on purpose. From Roger Clark — architect, systems builder.">
+<meta name="description" content="Tools and protocols for designing a life on purpose. From Roger Clark, architect turned systems builder.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Khand:wght@500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#f5f0e6; --ink:#211c15; --muted:#6f6558; --line:#d6cbb8;
-    --accent:#8a5a2b; --card:#fffdf6;
-    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
-    --sans:-apple-system,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --hand:'Caveat',cursive;
-    --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.07'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
+    --bg:#f6f4f0; --ink:#161616; --muted:#6b6b6b; --line:#e0dbd2;
+    --bronze:#CA8B63; --tan:#c5a47e; --card:#fdfcfa;
+    --head:'Khand',sans-serif; --body:'Inter',sans-serif; --mono:'JetBrains Mono',monospace;
+    --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.035'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  body{background:var(--paper) ;color:var(--ink);font-family:var(--serif);line-height:1.6;-webkit-font-smoothing:antialiased}
-  body::before{content:"";position:fixed;inset:0;background-image:var(--grain);pointer-events:none;opacity:.5;z-index:0}
-  .wrap{max-width:860px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
-  header{padding:72px 0 44px;border-bottom:2px solid var(--ink)}
-  .kicker{font-family:var(--sans);font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
-  h1{font-family:var(--hand);font-weight:700;font-size:clamp(52px,10vw,92px);line-height:1.02;letter-spacing:0;margin-top:14px}
-  h1 em{font-style:normal;color:var(--accent)}
-  .lede{margin-top:20px;font-size:20px;color:var(--muted);max-width:54ch}
-  main{padding:56px 0 24px}
-  .hcard{display:inline-block;font-family:var(--hand);font-weight:700;font-size:clamp(30px,5vw,42px);line-height:1;color:var(--ink);background-color:var(--card);background-image:var(--grain);padding:10px 26px 14px;border:1px solid var(--line);box-shadow:3px 4px 0 rgba(33,28,21,.12);transform:rotate(-1.2deg);margin-bottom:26px}
-  .card{display:block;background:var(--card);border:1px solid var(--line);border-radius:6px;padding:36px;text-decoration:none;color:inherit;transition:border-color .15s ease, transform .15s ease;box-shadow:0 1px 0 rgba(33,28,21,.05)}
-  .card:hover{border-color:var(--accent);transform:translateY(-2px)}
-  .card .num{font-family:var(--sans);font-size:12px;letter-spacing:.22em;color:var(--accent)}
-  .card h2{font-family:var(--hand);font-weight:700;font-size:clamp(34px,6vw,48px);line-height:1.05;margin:10px 0 12px}
-  .card p{color:var(--muted);max-width:60ch;font-size:17px}
-  .card .go{font-family:var(--sans);font-size:13px;letter-spacing:.08em;color:var(--accent);margin-top:20px;display:inline-block;border-bottom:1px solid var(--accent);padding-bottom:2px}
-  .soon{margin-top:44px}
-  .soon .card{opacity:.55;pointer-events:none}
-  .soon .card h2{font-size:clamp(26px,4vw,34px)}
-  footer{border-top:2px solid var(--ink);margin-top:72px;padding:28px 0 60px;font-family:var(--sans);font-size:13px;color:var(--muted);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-  @media(max-width:600px){header{padding:48px 0 34px}.card{padding:26px}}
+  body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.65;-webkit-font-smoothing:antialiased}
+  body::before{content:"";position:fixed;inset:0;background-image:var(--grain);pointer-events:none;z-index:0}
+  .wrap{max-width:880px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+  header{padding:64px 0 0}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--bronze)}
+  h1{font-family:var(--head);font-weight:600;font-size:clamp(52px,9vw,96px);line-height:.98;text-transform:uppercase;letter-spacing:.01em;margin-top:16px}
+  h1 span{color:var(--bronze)}
+  .lede{margin-top:18px;font-size:18px;color:var(--muted);max-width:52ch}
+  .heroimg{margin-top:40px;position:relative;border:1px solid var(--line);overflow:hidden}
+  .heroimg img{display:block;width:100%;height:auto;transform:scale(1.02);transition:transform 6s ease}
+  .heroimg.in img{transform:scale(1)}
+  .heroimg .cap{position:absolute;left:0;bottom:0;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#fff;background:rgba(22,22,22,.72);padding:6px 12px}
+  main{padding:64px 0 24px}
+  .seclabel{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+  .seclabel .no{font-family:var(--mono);font-size:12px;color:var(--bronze);letter-spacing:.2em}
+  .seclabel h2{font-family:var(--head);font-weight:600;font-size:clamp(28px,4.5vw,40px);text-transform:uppercase;line-height:1}
+  .seclabel .rule{flex:1;height:1px;background:var(--line)}
+  .card{display:block;background:var(--card);border:1px solid var(--line);padding:36px;text-decoration:none;color:inherit;transition:border-color .2s ease, transform .2s ease}
+  a.card:hover{border-color:var(--bronze);transform:translateY(-3px)}
+  .card .num{font-family:var(--mono);font-size:11px;letter-spacing:.24em;color:var(--bronze)}
+  .card h3{font-family:var(--head);font-weight:600;font-size:clamp(30px,5vw,44px);text-transform:uppercase;line-height:1;margin:10px 0 12px}
+  .card p{color:var(--muted);max-width:62ch;font-size:16px}
+  .card .go{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--bronze);margin-top:20px;display:inline-block;border-bottom:1px solid var(--bronze);padding-bottom:3px}
+  .soon{margin-top:48px}
+  .soon .card{opacity:.5}
+  .soon .card h3{font-size:clamp(22px,3.5vw,30px)}
+  .about{display:flex;gap:24px;align-items:center;margin-top:64px;padding:28px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .about img{width:76px;height:76px;border-radius:50%;border:1px solid var(--line);flex:none}
+  .about .who{font-family:var(--head);font-weight:600;font-size:24px;text-transform:uppercase;line-height:1.05}
+  .about p{color:var(--muted);font-size:15px;margin-top:4px;max-width:56ch}
+  footer{padding:30px 0 60px;font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--muted);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  footer a{color:inherit;text-decoration:none}
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none;transition:none}.heroimg img{transform:none;transition:none}}
+  @media(max-width:600px){header{padding:44px 0 0}.card{padding:26px}.about{flex-direction:row}}
 </style>
 </head>
 <body>
   <div class="wrap">
     <header>
-      <div class="kicker">Clarkitect</div>
-      <h1>Resources for a life <em>designed on purpose</em></h1>
-      <p class="lede">Protocols, tools, and small structures — for architecting the life you actually want, with your own hands and the best new instruments.</p>
-
-      <!-- hand-built dawn scene -->
-      <svg style="display:block;width:100%;height:auto;margin-top:36px;border:1px solid var(--line);border-radius:6px;box-shadow:3px 4px 0 rgba(33,28,21,.1)" viewBox="0 0 800 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Fog resting in a low field at dawn where a creek bends">
-        <defs>
-          <linearGradient id="dawnsky" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#a8b4c0"/><stop offset=".55" stop-color="#d9c49a"/><stop offset="1" stop-color="#e8d3a4"/>
-          </linearGradient>
-          <linearGradient id="fog" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#f2e8d2" stop-opacity="0"/><stop offset=".5" stop-color="#f2e8d2" stop-opacity=".85"/><stop offset="1" stop-color="#ece0c6" stop-opacity=".95"/>
-          </linearGradient>
-          <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#5c5236"/><stop offset="1" stop-color="#3d3626"/>
-          </linearGradient>
-        </defs>
-        <rect width="800" height="240" fill="url(#dawnsky)"/>
-        <circle cx="620" cy="86" r="26" fill="#f4e3b2" opacity=".9"/>
-        <circle cx="620" cy="86" r="44" fill="#f4e3b2" opacity=".25"/>
-        <!-- far treeline -->
-        <path d="M0 128 L46 124 L64 112 L84 124 L140 120 L168 106 L196 120 L260 116 L296 104 L330 118 L400 114 L440 102 L474 116 L560 112 L600 100 L634 114 L720 110 L800 114 L800 160 L0 160 Z" fill="#6b6a52" opacity=".7"/>
-        <!-- fog bank -->
-        <rect y="118" width="800" height="66" fill="url(#fog)"/>
-        <ellipse cx="180" cy="150" rx="200" ry="26" fill="#f2e8d2" opacity=".7"/>
-        <ellipse cx="560" cy="144" rx="240" ry="22" fill="#f2e8d2" opacity=".6"/>
-        <!-- near field -->
-        <path d="M0 176 C 140 168, 280 182, 420 176 S 700 170, 800 178 L800 240 L0 240 Z" fill="url(#ground)"/>
-        <!-- creek bend catching light -->
-        <path d="M-10 216 C 140 204, 250 226, 380 214 C 470 206, 520 196, 588 176 C 620 166, 650 158, 690 154" stroke="#e8d3a4" stroke-width="7" fill="none" opacity=".85" stroke-linecap="round"/>
-        <path d="M-10 216 C 140 204, 250 226, 380 214 C 470 206, 520 196, 588 176" stroke="#f4e9cf" stroke-width="2.5" fill="none" opacity=".9"/>
-        <!-- fence posts -->
-        <g fill="#2e2919"><rect x="80" y="196" width="4" height="18"/><rect x="150" y="200" width="4" height="17"/><rect x="220" y="203" width="4" height="16"/><rect x="290" y="205" width="4" height="15"/></g>
-      </svg>
+      <div class="kicker reveal">The Clarkitect</div>
+      <h1 class="reveal">Resources for a life<br><span>designed on purpose</span></h1>
+      <p class="lede reveal">Protocols, tools, and small structures for architecting the life you actually want. Built with your own hands and the best new instruments.</p>
+      <div class="heroimg reveal"><img src="img/hero-drawing.jpg" alt="Architectural ink drawing, a figure at the vanishing point of an exploding structure" loading="eager"><span class="cap">From the sketchbook · The Clarkitect</span></div>
     </header>
 
     <main>
-      <div class="hcard">Start here</div>
-      <a class="card" href="future-self.html">
+      <div class="seclabel reveal"><span class="no">01</span><h2>Start here</h2><span class="rule"></span></div>
+      <a class="card reveal" href="future-self.html">
         <span class="num">PROTOCOL 01</span>
-        <h2>The Future Self Audio</h2>
-        <p>Write your future life in the third person. Turn it into a news profile someone else reads aloud. Listen every night. The complete protocol — the writing sit-down, the generation prompt, the voice settings — in about an hour of work.</p>
-        <span class="go">Read the protocol →</span>
+        <h3>The Future Self Audio</h3>
+        <p>Write your future life in the third person. Turn it into a news profile someone else reads aloud. Listen every night. The complete protocol, from the writing sit-down to the voice settings, in about an hour of work.</p>
+        <span class="go">READ THE PROTOCOL →</span>
       </a>
 
       <div class="soon">
-        <div class="hcard" style="transform:rotate(.8deg)">In the shop</div>
-        <div class="card"><span class="num">TOOL 02</span><h2>The Vision Board Maker</h2><p>A guided questionnaire that turns your answers into a vision board in your own style — plus the script for your audio.</p></div>
+        <div class="seclabel reveal"><span class="no">02</span><h2>In the shop</h2><span class="rule"></span></div>
+        <div class="card reveal"><span class="num">TOOL 02</span><h3>The Vision Board Maker</h3><p>A guided questionnaire that turns your answers into a vision board in your own style, plus the script for your audio.</p></div>
+      </div>
+
+      <div class="about reveal">
+        <img src="img/rc.png" alt="Roger Clark">
+        <div>
+          <div class="who">Roger Clark</div>
+          <p>Architect turned systems builder. I design environments, physical, digital, and mental, that shape what happens inside them.</p>
+        </div>
       </div>
     </main>
 
     <footer>
       <span>© Roger Clark · The Clarkitect</span>
-      <span>Built by hand, amplified by AI · <a href="clarkfam/" style="color:inherit;text-decoration:none">✦</a></span>
+      <span>Built by hand, amplified by AI · <a href="clarkfam/">✦</a></span>
     </footer>
   </div>
+<script>
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+  document.querySelectorAll('.reveal,.heroimg').forEach(el=>io.observe(el));
+</script>
 </body>
 </html>
