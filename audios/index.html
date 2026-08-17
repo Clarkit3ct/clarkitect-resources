@@ -38,8 +38,16 @@
   .p-bar{height:3px;background:#20263a;overflow:hidden}
   .p-bar span{display:block;height:100%;background:var(--warm2);transition:width .6s ease}
   .p-note{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--muted);margin-top:12px}
-  .p-reset{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:#5c5750;background:none;border:none;cursor:pointer;margin-top:10px;padding:0}
-  .p-reset:hover{color:var(--muted)}
+  .sync{margin-top:14px;border-top:1px solid var(--line);padding-top:12px}
+  .sync summary{cursor:pointer;font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--muted)}
+  .sync summary #syncstatus{color:var(--warm2)}
+  .sync .s-on{color:var(--warm2)!important}.sync .s-warn{color:#b8894a!important}.sync .s-off{color:#5c5750!important}
+  .sync p{font-size:13px;color:var(--muted);margin:10px 0 8px}
+  .sync input{width:100%;background:var(--night);border:1px solid var(--line);color:var(--ink);font-family:var(--mono);font-size:11.5px;padding:9px 11px;margin-bottom:7px;outline:none}
+  .sync input:focus{border-color:var(--warm)}
+  .syncbtns{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+  .syncbtns button{font-family:var(--mono);font-size:10px;letter-spacing:.1em;background:none;border:1px solid var(--line);color:var(--muted);padding:7px 12px;cursor:pointer}
+  .syncbtns button:hover{border-color:var(--warm);color:var(--warm)}
 
   main{padding:30px 0 80px}
   .sect{font-family:var(--mono);font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin:32px 0 12px;display:flex;align-items:center;gap:12px}
@@ -74,7 +82,17 @@
       <div class="practice">
         <h2>Consistency</h2>
         <div id="practice"></div>
-        <button class="p-reset" onclick="practiceReset()">RESET HISTORY</button>
+        <details class="sync">
+          <summary>SYNC ACROSS DEVICES · <span id="syncstatus">this device only</span></summary>
+          <p>Paste your sync worker URL and a code you'll reuse on every device. History merges, so nothing is ever lost.</p>
+          <input id="syncurl" placeholder="https://clarkitect-practice-sync.____.workers.dev">
+          <input id="synccode" placeholder="your sync code">
+          <div class="syncbtns">
+            <button onclick="practiceSave()">SAVE &amp; SYNC</button>
+            <button onclick="practiceNewCode()">GENERATE CODE</button>
+            <button onclick="practiceReset()">CLEAR THIS DEVICE</button>
+          </div>
+        </details>
       </div>
     </div>
   </div>
@@ -224,6 +242,68 @@ Start before you feel ready. You will not feel ready, and it has never once matt
 One line at a time. Like every good building that has ever been made.
 
 Go.</pre></details>
+      </div>
+
+      <div class="sect">Hard days</div>
+
+      <div class="track" data-id="pedestal">
+        <div class="name">The Pedestal</div>
+        <div class="meta">NEW · STEPH · 3:03 · FOR THE DAY THE WORK FEELS BEHIND</div>
+        <div class="p-count"></div>
+        <audio controls preload="metadata" playsinline><source src="/audios/audio/26-0817-the-pedestal-steph.mp3" type="audio/mpeg"></audio>
+        <a class="direct" href="/audios/audio/26-0817-the-pedestal-steph.mp3">OPEN DIRECT ↗</a>
+        <details class="script"><summary>READ THE SCRIPT</summary><pre>
+The Pedestal.
+
+Some days the work feels behind. Not broken. Just behind.
+
+There is a version of you that you measure against. He is further along. He moved faster. He didn't waste those months. He already has the thing built.
+
+Let's look at him for a second, because he deserves a closer look.
+
+He is not a real person. He is a composite. He has your standards, somebody else's timeline, and a third person's resources. He was assembled out of the best parts of everyone you admire, and he carries none of their bad years, because you never saw those.
+
+And notice this. Every single time you reach him, he moves. That is not a coincidence. That is his function. A standard that keeps moving is not a standard. It is a treadmill you built, and then forgot that you built.
+
+So set him down. Not forever. Just for the next two minutes.
+
+Now. Add up the wins.
+
+Not the plan. The wins. The things that exist because you decided they should.
+
+You left a career that had you. You were licensed. You were rising. And you walked, because you looked at the lives ten and twenty years ahead of you and you did not want a single one of them. Most people never do that once.
+
+You built a company with your wife, and you learned to sell, which you were not born knowing.
+
+There is ground in play, and there are partners at the table. Three years ago that was one sentence in a notebook.
+
+Your name is on real drawings. Real buildings. Real rooms that real people stand inside.
+
+And the part of the work you still love the most is the initial concept phase. The blank sheet. You never lost that. A lot of people lose that.
+
+That is not a plan. That is a record.
+
+Here is the thing about a hard day. A hard day is not evidence. It is weather.
+
+You already know what to do, because you built the loop yourself. Learn. Do. Filter. Organize. And then come back to what you know.
+
+So come back.
+
+Know what you have, and know where you are.
+
+You have more than the man who first wrote the number down. You are further along than the man who quit. The ground is still there. The people are still at the table. None of that moved today.
+
+And at the end of the day, one word.
+
+Care.
+
+Care about the work. Care about the people at the table. Care about the ground.
+
+The rest is arithmetic, and arithmetic is patient.
+
+Put the pedestal down. Go do one real thing.
+
+That is how every good day has ever started.</pre></details>
       </div>
 
       <div class="sect">Archive</div>
