@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clarkfam — Night Audio</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --night:#10131c; --card:#181c28; --ink:#e9e2d2; --muted:#8b847c;
+    --line:#2a3040; --warm:#c9a35c; --warm2:#e0b96f;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    --sans:-apple-system,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    --hand:'Caveat',cursive;
+    --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.05'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--night);color:var(--ink);font-family:var(--serif);line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh}
+  body::after{content:"";position:fixed;inset:0;background-image:var(--grain);pointer-events:none;opacity:.6;z-index:2}
+  .sky{position:relative;overflow:hidden;padding:56px 0 0}
+  .wrap{max-width:640px;margin:0 auto;padding:0 22px;position:relative;z-index:3}
+  .kicker{font-family:var(--sans);font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--warm)}
+  h1{font-family:var(--hand);font-weight:700;font-size:clamp(46px,10vw,72px);line-height:1;margin-top:10px;color:var(--ink)}
+  .lede{margin-top:12px;color:#a9a08b;font-size:17px;max-width:44ch}
+  .scene{display:block;width:100%;height:auto;margin-top:34px;border-radius:8px;border:1px solid var(--line)}
+  main{position:relative;z-index:3;padding:36px 0 80px}
+  .track{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:20px 22px;margin-bottom:14px}
+  .track .name{font-family:var(--hand);font-weight:700;font-size:28px;color:var(--warm2);line-height:1.1}
+  .track .meta{font-family:var(--sans);font-size:12px;letter-spacing:.08em;color:#8b847c;margin:4px 0 12px}
+  .track audio{width:100%;height:40px}
+  .track.pending{opacity:.75}
+  .track .script{font-size:15.5px;color:#c9c1ae;border-top:1px solid var(--line);margin-top:12px;padding-top:12px}
+  .track .script summary{cursor:pointer;font-family:var(--sans);font-size:12.5px;letter-spacing:.08em;color:var(--warm)}
+  .track .script pre{white-space:pre-wrap;font-family:inherit;margin-top:10px;line-height:1.7}
+  .howto{border:1px dashed var(--line);border-radius:8px;padding:18px 22px;margin-top:30px;font-size:15px;color:#a9a08b}
+  .howto b{color:var(--ink)}
+  /* GATE */
+  #gate{position:fixed;inset:0;background:var(--night);z-index:10;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:24px}
+  #gate .g{font-family:var(--hand);font-weight:700;font-size:54px;color:var(--warm2)}
+  #gate p{color:#8b847c;font-family:var(--sans);font-size:13px;margin:8px 0 18px}
+  #gate input{background:var(--card);border:1px solid var(--line);border-radius:6px;color:var(--ink);font-size:18px;padding:12px 16px;text-align:center;letter-spacing:.1em;outline:none;width:min(280px,80vw)}
+  #gate input:focus{border-color:var(--warm)}
+  #gate button{margin-top:14px;background:var(--warm);color:#181305;border:none;border-radius:6px;font-family:var(--sans);font-size:14px;letter-spacing:.08em;padding:12px 30px;cursor:pointer}
+  .hidden{display:none!important}
+  footer{position:relative;z-index:3;border-top:1px solid var(--line);padding:22px 0 46px;font-family:var(--sans);font-size:12px;color:#6d675f;text-align:center}
+</style>
+</head>
+<body>
+
+<div id="gate">
+  <div class="g">clarkfam</div>
+  <p>family only — the word, then enter</p>
+  <input id="pw" type="password" autocomplete="off" placeholder="password">
+  <button onclick="unlock()">enter</button>
+</div>
+
+<div id="site" class="hidden">
+  <div class="sky">
+    <div class="wrap">
+      <div class="kicker">Clarkfam · Night Audio</div>
+      <h1>Before sleep</h1>
+      <p class="lede">Three slow breaths first. Low volume. Let the body settle, then let the story land — and listen from inside the life.</p>
+
+      <!-- hand-built night scene -->
+      <svg class="scene" viewBox="0 0 640 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Night sky over a dark field, one porch light glowing">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#0d1322"/><stop offset=".62" stop-color="#16203a"/><stop offset="1" stop-color="#1d2032"/>
+          </linearGradient>
+          <radialGradient id="glow" cx=".5" cy=".5" r=".5">
+            <stop offset="0" stop-color="#e0b96f" stop-opacity=".9"/><stop offset=".4" stop-color="#c9a35c" stop-opacity=".35"/><stop offset="1" stop-color="#c9a35c" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="field" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#0b0e14"/><stop offset="1" stop-color="#07090d"/>
+          </linearGradient>
+        </defs>
+        <rect width="640" height="260" fill="url(#sky)"/>
+        <g fill="#e9e2d2">
+          <circle cx="60" cy="38" r="1.1" opacity=".8"/><circle cx="132" cy="72" r=".8" opacity=".6"/><circle cx="204" cy="30" r="1" opacity=".7"/><circle cx="286" cy="58" r=".7" opacity=".5"/><circle cx="342" cy="24" r="1.2" opacity=".85"/><circle cx="398" cy="66" r=".8" opacity=".55"/><circle cx="470" cy="40" r="1" opacity=".75"/><circle cx="540" cy="70" r=".7" opacity=".5"/><circle cx="590" cy="28" r="1.1" opacity=".8"/><circle cx="102" cy="112" r=".7" opacity=".45"/><circle cx="250" cy="96" r=".8" opacity=".5"/><circle cx="430" cy="104" r=".7" opacity=".45"/><circle cx="510" cy="120" r=".9" opacity=".55"/><circle cx="620" cy="96" r=".8" opacity=".5"/><circle cx="30" cy="86" r=".8" opacity=".55"/>
+        </g>
+        <!-- treeline -->
+        <path d="M0 172 L38 168 L54 158 L70 168 L120 164 L150 152 L172 164 L230 160 L260 150 L288 162 L340 158 L372 148 L400 160 L470 156 L502 146 L530 158 L600 154 L640 158 L640 200 L0 200 Z" fill="#0c1018"/>
+        <!-- field -->
+        <rect y="196" width="640" height="64" fill="url(#field)"/>
+        <!-- farmhouse + porch light -->
+        <circle cx="480" cy="186" r="46" fill="url(#glow)"/>
+        <g>
+          <rect x="452" y="176" width="56" height="26" fill="#0a0c11"/>
+          <path d="M448 178 L480 158 L512 178 Z" fill="#0a0c11"/>
+          <rect x="476" y="186" width="9" height="16" fill="#1a1408"/>
+          <circle cx="470" cy="184" r="2.6" fill="#ffd98a"/>
+        </g>
+        <!-- creek hint -->
+        <path d="M0 226 C 120 218, 200 238, 320 230 S 540 222, 640 232" stroke="#1c2740" stroke-width="5" fill="none" opacity=".8"/>
+      </svg>
+    </div>
+  </div>
+
+  <main>
+    <div class="wrap">
+
+      <div class="track">
+        <div class="name">The Meridian — v1.1</div>
+        <div class="meta">THE NIGHTLY · Spuds Oxley · Aug 17 2026 · third-person profile, 2030</div>
+        <audio controls preload="none" src="audio/26-0817-meridian-v1.1-spuds.mp3"></audio>
+      </div>
+
+      <div class="track">
+        <div class="name">The Meridian — v1</div>
+        <div class="meta">ARCHIVE · Adam · Aug 16 2026 · the first take</div>
+        <audio controls preload="none" src="audio/26-0816-meridian-v1-adam.mp3"></audio>
+      </div>
+
+      <div class="track pending">
+        <div class="name">Already Done — the morning practice</div>
+        <div class="meta">AWAITING VOICE · first person · breath → gratitude → the scene → go build</div>
+        <details class="script"><summary>read the script</summary><pre>
+Sit up. Feet on the floor, spine tall.
+
+Three rounds of breath. In through the nose... and let it go. Again — fill the whole chest... and release. One more — all the way in... hold at the top... and let it fall away.
+
+Now a hand on your heart. Say it with me — in the body, not just the mouth.
+
+Thank you, thank you, thank you — for the property. The land that fuels my creativity and asks me to be its voice. It teaches me, it holds me, and it ties all the way back home, to the Clark farm.
+
+Thank you, thank you, thank you — for the team. For the crew and the vessel, and the precious cargo we carry.
+
+Thank you, thank you, thank you — for Hattie. For the deepening. For a home that can truly hold a family.
+
+Thank you, thank you, thank you — for the stream. Money moves with no resistance. I am generous without fear. Calm without vigilance.
+
+Thank you for these hands and this mind — and for everything they're still learning.
+
+Now come with me, because this is real.
+
+It's early. You step off the porch and the grass is wet under your feet. You can hear water — it was a requirement, remember, and there it is. Fog is sitting in the low field where the creek bends. The best room on the property. Somewhere behind you the kids are laughing at a chore that turned into a game. The shop is warm and there's a sketch on the bench waiting for you. Nothing is chasing you. The systems are holding. The people are capable. You built a container, and it's beautiful, and it was made on purpose.
+
+Feel that in your chest. Not someday. Now.
+
+You are the source. Your state is a decision, and you've already made it.
+
+It's already done.
+
+Now — go build like it.</pre></details>
+      </div>
+
+      <div class="track pending">
+        <div class="name">The Ledger</div>
+        <div class="meta">AWAITING VOICE · pre-sleep · every open loop, named and set down</div>
+        <details class="script"><summary>read the script</summary><pre>
+The Ledger. Late summer, twenty twenty-six.
+
+This is everything that has your name on it. Hear each line, and set it down.
+
+Boulder Creek. The systems are built and learning. The first guests are on the calendar. The pricing holds. It's moving. It doesn't need you tonight.
+
+The Immersive Studio. The launch is coming and the work is good. It doesn't need you tonight.
+
+Clark Creative Group. The rebrand is real and the name finally fits. It doesn't need you tonight.
+
+The resources site. Live, on your own domain, teaching the first protocol. It doesn't need you tonight.
+
+The debt. It's a number, not a verdict. The plan is running and the direction is down. It doesn't need you tonight.
+
+The number. Three million, three hundred thirty-three thousand. Written years ago, already in motion. It has never needed you at night.
+
+The body. Trained, fed, and stronger than last year. What it needs from you now is exactly this — rest.
+
+Hattie. Home. The same team, the same table. Nothing to solve. Just gratitude.
+
+The brothers, the farm, the foundation that doesn't exist yet — the one table the whole family builds at. It's coming. It keeps.
+
+The practice. You listened tonight. That was the whole job, and it's done.
+
+That's the ledger. Every line is moving. Nothing on it needs you before morning.
+
+Look back for a second. Add up the wins. Know what you have, and know where you are.
+
+Now set it all down.
+
+It's already done. Goodnight.</pre></details>
+      </div>
+
+      <div class="howto">
+        <b>On your phone:</b> open this page in Safari → Share → <b>Add to Home Screen</b>. It becomes a one-tap night app; audio plays with the screen locked. New tracks appear here the moment they're voiced.
+      </div>
+    </div>
+  </main>
+
+  <footer>clarkfam · not for sharing · resource.the-clarkitect.com</footer>
+</div>
+
+<script>
+  const KEY='clarkfam-unlocked', WORD='clarkfam26';
+  function unlock(){
+    if(document.getElementById('pw').value.trim().toLowerCase()===WORD){
+      sessionStorage.setItem(KEY,'1'); show();
+    } else {
+      const i=document.getElementById('pw'); i.value=''; i.placeholder='try again';
+    }
+  }
+  function show(){document.getElementById('gate').classList.add('hidden');document.getElementById('site').classList.remove('hidden')}
+  if(sessionStorage.getItem(KEY)==='1') show();
+  document.getElementById('pw').addEventListener('keydown',e=>{if(e.key==='Enter')unlock()});
+</script>
+</body>
+</html>

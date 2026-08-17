@@ -47,6 +47,37 @@
       <div class="kicker">Clarkitect</div>
       <h1>Resources for a life <em>designed on purpose</em></h1>
       <p class="lede">Protocols, tools, and small structures — for architecting the life you actually want, with your own hands and the best new instruments.</p>
+
+      <!-- hand-built dawn scene -->
+      <svg style="display:block;width:100%;height:auto;margin-top:36px;border:1px solid var(--line);border-radius:6px;box-shadow:3px 4px 0 rgba(33,28,21,.1)" viewBox="0 0 800 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Fog resting in a low field at dawn where a creek bends">
+        <defs>
+          <linearGradient id="dawnsky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#a8b4c0"/><stop offset=".55" stop-color="#d9c49a"/><stop offset="1" stop-color="#e8d3a4"/>
+          </linearGradient>
+          <linearGradient id="fog" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#f2e8d2" stop-opacity="0"/><stop offset=".5" stop-color="#f2e8d2" stop-opacity=".85"/><stop offset="1" stop-color="#ece0c6" stop-opacity=".95"/>
+          </linearGradient>
+          <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#5c5236"/><stop offset="1" stop-color="#3d3626"/>
+          </linearGradient>
+        </defs>
+        <rect width="800" height="240" fill="url(#dawnsky)"/>
+        <circle cx="620" cy="86" r="26" fill="#f4e3b2" opacity=".9"/>
+        <circle cx="620" cy="86" r="44" fill="#f4e3b2" opacity=".25"/>
+        <!-- far treeline -->
+        <path d="M0 128 L46 124 L64 112 L84 124 L140 120 L168 106 L196 120 L260 116 L296 104 L330 118 L400 114 L440 102 L474 116 L560 112 L600 100 L634 114 L720 110 L800 114 L800 160 L0 160 Z" fill="#6b6a52" opacity=".7"/>
+        <!-- fog bank -->
+        <rect y="118" width="800" height="66" fill="url(#fog)"/>
+        <ellipse cx="180" cy="150" rx="200" ry="26" fill="#f2e8d2" opacity=".7"/>
+        <ellipse cx="560" cy="144" rx="240" ry="22" fill="#f2e8d2" opacity=".6"/>
+        <!-- near field -->
+        <path d="M0 176 C 140 168, 280 182, 420 176 S 700 170, 800 178 L800 240 L0 240 Z" fill="url(#ground)"/>
+        <!-- creek bend catching light -->
+        <path d="M-10 216 C 140 204, 250 226, 380 214 C 470 206, 520 196, 588 176 C 620 166, 650 158, 690 154" stroke="#e8d3a4" stroke-width="7" fill="none" opacity=".85" stroke-linecap="round"/>
+        <path d="M-10 216 C 140 204, 250 226, 380 214 C 470 206, 520 196, 588 176" stroke="#f4e9cf" stroke-width="2.5" fill="none" opacity=".9"/>
+        <!-- fence posts -->
+        <g fill="#2e2919"><rect x="80" y="196" width="4" height="18"/><rect x="150" y="200" width="4" height="17"/><rect x="220" y="203" width="4" height="16"/><rect x="290" y="205" width="4" height="15"/></g>
+      </svg>
     </header>
 
     <main>
@@ -66,7 +97,7 @@
 
     <footer>
       <span>© Roger Clark · The Clarkitect</span>
-      <span>Built by hand, amplified by AI</span>
+      <span>Built by hand, amplified by AI · <a href="clarkfam/" style="color:inherit;text-decoration:none">✦</a></span>
     </footer>
   </div>
 </body>
