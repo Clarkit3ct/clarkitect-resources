@@ -1,0 +1,5 @@
+{
+  "redirects": [
+    { "source": "/clarkfam/audio/:file", "destination": "/audios/audio/:file", "permanent": true }
+  ]
+}
