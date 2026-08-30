@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Clarity Calendar Maker</title>
+<meta name="description" content="Set up your own year-on-one-wall calendar. Pick your year, mark your dates, print it 48 by 36.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@500;600;700&family=Khand:wght@500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  @page { size: 48in 36in; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root{
+    --bg:#f6f4f0; --ink:#161616; --muted:#6b6b6b; --line:#e0dbd2;
+    --bronze:#CA8B63; --card:#fdfcfa;
+    --head:'Khand',sans-serif; --body:'Inter',sans-serif; --mono:'JetBrains Mono',monospace;
+    /* sheet line hierarchy — drawing-set weights */
+    --w1: 0.034in solid #0d0d0d;
+    --w2: 0.019in solid #0d0d0d;
+    --w3: 0.009in solid #a8a196;
+    --wknd:#f4dcc3;
+  }
+  body { background:var(--bg); color:var(--ink); font-family:var(--body); }
+
+  /* ── Page chrome (screen only) ── */
+  .pagehead { padding:28px 32px 18px; border-bottom:1px solid var(--line); display:flex; align-items:baseline; gap:18px; flex-wrap:wrap; }
+  .pagehead .kicker { font-family:var(--mono); font-size:11px; letter-spacing:.3em; color:var(--bronze); }
+  .pagehead h1 { font-family:var(--head); font-weight:600; font-size:30px; text-transform:uppercase; line-height:1; }
+  .pagehead a { margin-left:auto; font-family:var(--mono); font-size:11.5px; color:var(--muted); text-decoration:none; letter-spacing:.08em; }
+  .pagehead a:hover { color:var(--bronze); }
+
+  .app { display:flex; align-items:flex-start; }
+
+  /* ── Controls rail ── */
+  #controls { width:320px; flex:none; padding:24px 24px 48px; border-right:1px solid var(--line); min-height:calc(100vh - 78px); }
+  .ctl { margin-bottom:26px; }
+  .ctl .lab { font-family:var(--mono); font-size:10.5px; letter-spacing:.24em; color:var(--bronze); margin-bottom:9px; }
+  .row { display:flex; gap:8px; align-items:center; }
+
+  .step { display:flex; align-items:center; gap:0; border:1px solid var(--line); background:var(--card); }
+  .step button { width:44px; height:44px; border:none; background:none; font-size:20px; cursor:pointer; color:var(--ink); }
+  .step button:hover { color:var(--bronze); }
+  .step .yr { flex:1; text-align:center; font-family:var(--head); font-weight:600; font-size:26px; letter-spacing:.04em; }
+
+  input[type=text] { width:100%; border:1px solid var(--line); background:var(--card); padding:10px 12px; font-family:var(--head); font-weight:600; font-size:18px; text-transform:uppercase; letter-spacing:.04em; color:var(--ink); }
+  input[type=text]:focus, select:focus, input[type=number]:focus { outline:1.5px solid var(--bronze); }
+
+  .tog { display:flex; align-items:center; gap:9px; padding:5px 0; font-size:13.5px; cursor:pointer; user-select:none; }
+  .tog input { accent-color:var(--bronze); width:15px; height:15px; }
+  .tog.master { border-bottom:1px solid var(--line); padding-bottom:9px; margin-bottom:7px; font-weight:600; }
+  #holList { display:grid; grid-template-columns:1fr; }
+
+  .dr { display:flex; gap:6px; margin-bottom:7px; align-items:center; }
+  .dr select, .dr input[type=number] { border:1px solid var(--line); background:var(--card); padding:8px 6px; font-family:var(--mono); font-size:12px; color:var(--ink); }
+  .dr select { width:64px; }
+  .dr input[type=number] { width:52px; }
+  .dr input[type=text] { flex:1; font-family:var(--body); font-weight:500; font-size:12.5px; padding:8px 8px; text-transform:uppercase; }
+  .dr .del { border:none; background:none; color:var(--muted); font-size:16px; cursor:pointer; padding:4px; }
+  .dr .del:hover { color:#a33; }
+  #addDate { border:1px dashed var(--line); background:none; width:100%; padding:9px; font-family:var(--mono); font-size:11px; letter-spacing:.14em; color:var(--muted); cursor:pointer; }
+  #addDate:hover { border-color:var(--bronze); color:var(--bronze); }
+
+  .swatches { display:flex; gap:10px; }
+  .sw { width:40px; height:40px; border:1px solid var(--line); cursor:pointer; position:relative; }
+  .sw.on { outline:2.5px solid var(--bronze); outline-offset:2px; }
+
+  #printBtn { width:100%; border:none; background:var(--ink); color:#fff; font-family:var(--head); font-weight:600; font-size:19px; letter-spacing:.08em; text-transform:uppercase; padding:15px; cursor:pointer; }
+  #printBtn:hover { background:var(--bronze); }
+  .printnote { margin-top:10px; font-size:12px; color:var(--muted); line-height:1.55; }
+  .printnote b { color:var(--ink); font-weight:600; }
+
+  /* ── Preview stage ── */
+  .stage { flex:1; overflow:auto; padding:28px; background:#565656; min-height:calc(100vh - 78px); }
+  .stagecap { font-family:var(--mono); font-size:10.5px; letter-spacing:.2em; color:#cfcac2; margin-bottom:14px; }
+
+  /* ── THE SHEET — true print inches ── */
+  .sheet { width:48in; height:36in; padding:0.32in 0.38in 0.26in; display:flex; flex-direction:column; background:#fff; font-family:'Oswald','Arial Narrow','Helvetica Neue',Arial,sans-serif; color:#111; box-shadow:0 12px 48px rgba(0,0,0,.45); }
+  .band { height:3.0in; flex:none; margin-bottom:0.22in; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    background-color:#f4f4f4;
+    background-image:
+      radial-gradient(ellipse 58% 130% at 50% 50%, #ffffff 26%, rgba(255,255,255,0) 76%),
+      repeating-linear-gradient(112deg, rgba(110,110,110,.30) 0 0.018in, rgba(255,255,255,0) 0.018in 0.10in),
+      repeating-linear-gradient(112deg, rgba(150,150,150,.16) 0 0.05in, rgba(255,255,255,0) 0.05in 0.24in),
+      linear-gradient(180deg,#efefef,#fbfbfb);
+  }
+  .band .t { font-family:'Anton','Arial Narrow',sans-serif; font-size:1.62in; line-height:1; letter-spacing:.035em; color:#0d0d0d; text-transform:uppercase; white-space:nowrap; }
+  .band .rule { width:32in; height:.085in; background:#0d0d0d; margin-top:.17in; }
+  .months { flex:1; display:flex; flex-direction:column; gap:.13in; }
+  .month-row { flex:1; display:flex; align-items:stretch; }
+  .mlabel { width:.72in; flex:none; display:flex; align-items:center; justify-content:center; }
+  .mlabel span { font-weight:700; font-size:.37in; letter-spacing:.08em; color:#0d0d0d; white-space:nowrap; }
+  .mlabel.left span { writing-mode:vertical-rl; transform:rotate(180deg); }
+  .mlabel.right span { writing-mode:vertical-rl; }
+  .grid { flex:1; display:grid; grid-template-columns:repeat(31,1fr); grid-template-rows:.40in 1fr; }
+  .dh { display:flex; align-items:center; justify-content:space-between; padding:0 .08in; border-top:var(--w1); border-bottom:var(--w2); border-left:var(--w3); background:#fff; font-weight:600; font-size:.20in; letter-spacing:.01em; line-height:1; }
+  .dh .num { font-weight:700; }
+  .dh.wk { border-left:var(--w2); } .dh.first { border-left:var(--w1); } .dh.last { border-right:var(--w1); }
+  .db { border-bottom:var(--w1); border-left:var(--w3); background:#fff; display:flex; flex-direction:column; justify-content:flex-end; align-items:center; padding-bottom:.07in; }
+  .db.wk { border-left:var(--w2); } .db.first { border-left:var(--w1); } .db.last { border-right:var(--w1); }
+  .wknd { background:var(--wknd) !important; }
+  .hol { font-weight:600; font-size:.13in; letter-spacing:.055em; color:#966d49; white-space:nowrap; }
+  .hol.mine { color:#2f2e2a; }
+  .fill { border-top:var(--w1); border-right:var(--w1); border-bottom:var(--w1); background-color:#f3f1ed;
+    background-image:repeating-linear-gradient(45deg, rgba(13,13,13,.085) 0 .025in, rgba(0,0,0,0) .025in .15in); }
+  .foot { flex:none; height:.30in; display:flex; justify-content:space-between; align-items:flex-end; padding-top:.10in; font-weight:600; font-size:.15in; letter-spacing:.16em; color:#8b857b; }
+
+  /* Screen: scale the sheet down for preview */
+  @media screen { .sheet { zoom:.24; } }
+  @media screen and (max-width:900px) {
+    .app { flex-direction:column; }
+    #controls { width:100%; min-height:0; border-right:none; border-bottom:1px solid var(--line); }
+    .stage { min-height:0; width:100%; }
+  }
+
+  /* Print: the sheet only, at true size */
+  @media print {
+    html, body { width:48in; height:36in; overflow:hidden; background:#fff; }
+    .pagehead, #controls, .stagecap { display:none !important; }
+    .app, .stage { display:block; padding:0; margin:0; background:#fff; overflow:visible; min-height:0; }
+    .sheet { zoom:1; box-shadow:none; page-break-after:avoid; }
+  }
+</style>
+</head>
+<body>
+  <header class="pagehead">
+    <span class="kicker">TOOL 03</span>
+    <h1>The Clarity Calendar Maker</h1>
+    <a href="./">&larr; ABOUT THE CALENDAR</a>
+  </header>
+
+  <div class="app">
+    <aside id="controls">
+      <div class="ctl">
+        <div class="lab">YEAR</div>
+        <div class="step">
+          <button id="yDown" aria-label="previous year">&minus;</button>
+          <span class="yr" id="yShow">2027</span>
+          <button id="yUp" aria-label="next year">+</button>
+        </div>
+      </div>
+
+      <div class="ctl">
+        <div class="lab">TITLE</div>
+        <input type="text" id="tIn" maxlength="22" value="CLARITY CALENDAR">
+      </div>
+
+      <div class="ctl">
+        <div class="lab">US HOLIDAYS</div>
+        <label class="tog master"><input type="checkbox" id="holMaster" checked> Print holidays</label>
+        <div id="holList"></div>
+      </div>
+
+      <div class="ctl">
+        <div class="lab">MY DATES</div>
+        <div id="dateRows"></div>
+        <button id="addDate">+ ADD A DATE</button>
+      </div>
+
+      <div class="ctl">
+        <div class="lab">WEEKEND COLOR</div>
+        <div class="swatches" id="swatches"></div>
+      </div>
+
+      <div class="ctl">
+        <button id="printBtn">Print your sheet</button>
+        <p class="printnote"><b>At a print shop:</b> ask for 48 &times; 36, printed at 100%. Color if you can; a black and white engineering print works too and costs a few dollars.<br><b>Want the file?</b> Print, then choose &ldquo;Save as PDF.&rdquo;</p>
+      </div>
+    </aside>
+
+    <main class="stage">
+      <div class="stagecap">LIVE PREVIEW &middot; PRINTS AT 48 &times; 36</div>
+      <div class="sheet" id="sheet">
+        <div class="band"><div class="t" id="sheetTitle"></div><div class="rule"></div></div>
+        <div class="months" id="sheetMonths"></div>
+        <div class="foot"><span>365 DAYS &middot; 52 WEEKS &middot; ONE SHEET</span><span id="sheetSig"></span></div>
+      </div>
+    </main>
+  </div>
+
+<script>
+(function(){
+  var MONTH_LABELS=["JAN","FEB","MAR","APRIL","MAY","JUNE","JULY","AUGUST","SEPT","OCT","NOV","DEC"];
+  var MONTH_ABBR=["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
+  var WEEKDAYS=["MON","TUE","WED","THUR","FRI","SAT","SUN"];
+  var ACCENTS={peach:"#f4dcc3",sage:"#dde3cd",sky:"#d8e3ea",graphite:"#e2e0dc"};
+
+  function dim(y,m){return new Date(y,m,0).getDate();}            // days in month (m 1-12)
+  function wd(y,m,d){return (new Date(y,m-1,d).getDay()+6)%7;}    // Mon=0
+  function nth(y,m,weekday,n){
+    var hits=[]; for(var d=1;d<=dim(y,m);d++) if(wd(y,m,d)===weekday) hits.push(d);
+    return n>0?hits[n-1]:hits[hits.length-1];
+  }
+  var HOLIDAYS=[
+    {k:"ny",   n:"NEW YEAR'S DAY",          f:function(y){return [1,1];}},
+    {k:"mlk",  n:"MLK DAY",                 f:function(y){return [1,nth(y,1,0,3)];}},
+    {k:"pres", n:"PRESIDENTS' DAY",         f:function(y){return [2,nth(y,2,0,3)];}},
+    {k:"mem",  n:"MEMORIAL DAY",            f:function(y){return [5,nth(y,5,0,-1)];}},
+    {k:"junet",n:"JUNETEENTH",              f:function(y){return [6,19];}},
+    {k:"ind",  n:"INDEPENDENCE DAY",        f:function(y){return [7,4];}},
+    {k:"labor",n:"LABOR DAY",               f:function(y){return [9,nth(y,9,0,1)];}},
+    {k:"indig",n:"INDIGENOUS PEOPLES' DAY", f:function(y){return [10,nth(y,10,0,2)];}},
+    {k:"vet",  n:"VETERANS DAY",            f:function(y){return [11,11];}},
+    {k:"thx",  n:"THANKSGIVING",            f:function(y){return [11,nth(y,11,3,4)];}},
+    {k:"xmas", n:"CHRISTMAS",               f:function(y){return [12,25];}}
+  ];
+
+  var S={y:2027,title:"CLARITY CALENDAR",acc:"peach",holOn:true,hol:{},dates:[]};
+  HOLIDAYS.forEach(function(h){S.hol[h.k]=true;});
+
+  // restore from URL hash if present
+  try{
+    if(location.hash.length>1){
+      var got=JSON.parse(decodeURIComponent(location.hash.slice(1)));
+      if(got&&typeof got==="object"){
+        if(got.y>=2025&&got.y<=2035)S.y=got.y;
+        if(typeof got.title==="string")S.title=got.title.slice(0,22);
+        if(ACCENTS[got.acc])S.acc=got.acc;
+        if(typeof got.holOn==="boolean")S.holOn=got.holOn;
+        if(got.hol)HOLIDAYS.forEach(function(h){if(typeof got.hol[h.k]==="boolean")S.hol[h.k]=got.hol[h.k];});
+        if(Array.isArray(got.dates))S.dates=got.dates.filter(function(x){return x&&x.m>=1&&x.m<=12&&x.d>=1&&x.d<=31&&typeof x.label==="string";}).slice(0,40);
+      }
+    }
+  }catch(e){}
+
+  function saveHash(){
+    try{history.replaceState(null,"","#"+encodeURIComponent(JSON.stringify(S)));}catch(e){}
+  }
+
+  function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+
+  function render(){
+    document.getElementById("sheetTitle").textContent=S.y+" "+(S.title||"CLARITY CALENDAR");
+    document.getElementById("sheetSig").textContent="THE CLARKITECT · "+S.y;
+    document.documentElement.style.setProperty("--wknd",ACCENTS[S.acc]);
+
+    var marks={}; // "m-d" -> [{txt,mine}]
+    if(S.holOn) HOLIDAYS.forEach(function(h){
+      if(S.hol[h.k]){var md=h.f(S.y);(marks[md[0]+"-"+md[1]]=marks[md[0]+"-"+md[1]]||[]).push({txt:h.n,mine:false});}
+    });
+    S.dates.forEach(function(x){
+      if(x.label&&x.d<=dim(S.y,x.m))(marks[x.m+"-"+x.d]=marks[x.m+"-"+x.d]||[]).push({txt:x.label.toUpperCase().slice(0,24),mine:true});
+    });
+
+    var out="";
+    for(var m=1;m<=12;m++){
+      var nd=dim(S.y,m),head="",body="";
+      for(var d=1;d<=nd;d++){
+        var w=wd(S.y,m,d),cls="";
+        if(d===1)cls+=" first"; else if(w===0)cls+=" wk";
+        if(d===nd)cls+=" last";
+        if(w>=5)cls+=" wknd";
+        head+='<div class="dh'+cls+'"><span class="num">'+String(d).padStart(2,"0")+'</span><span class="day">'+WEEKDAYS[w]+'</span></div>';
+        var mk=(marks[m+"-"+d]||[]).map(function(x){return '<span class="hol'+(x.mine?" mine":"")+'">'+esc(x.txt)+'</span>';}).join("");
+        body+='<div class="db'+cls+'">'+mk+'</div>';
+      }
+      var filler=nd<31?'<div class="fill" style="grid-column:'+(nd+1)+' / 32; grid-row:1 / 3"></div>':"";
+      out+='<div class="month-row"><div class="mlabel left"><span>'+MONTH_LABELS[m-1]+'</span></div><div class="grid">'+head+body+filler+'</div><div class="mlabel right"><span>'+MONTH_LABELS[m-1]+'</span></div></div>';
+    }
+    document.getElementById("sheetMonths").innerHTML=out;
+    saveHash();
+  }
+
+  // ── controls wiring ──
+  var yShow=document.getElementById("yShow");
+  function setYear(y){S.y=Math.min(2035,Math.max(2025,y));yShow.textContent=S.y;render();}
+  document.getElementById("yDown").onclick=function(){setYear(S.y-1);};
+  document.getElementById("yUp").onclick=function(){setYear(S.y+1);};
+  yShow.textContent=S.y;
+
+  var tIn=document.getElementById("tIn");
+  tIn.value=S.title;
+  tIn.oninput=function(){S.title=tIn.value.toUpperCase();render();};
+
+  var holMaster=document.getElementById("holMaster");
+  holMaster.checked=S.holOn;
+  holMaster.onchange=function(){S.holOn=holMaster.checked;render();};
+  var holList=document.getElementById("holList");
+  HOLIDAYS.forEach(function(h){
+    var l=document.createElement("label");l.className="tog";
+    var c=document.createElement("input");c.type="checkbox";c.checked=S.hol[h.k];
+    c.onchange=function(){S.hol[h.k]=c.checked;render();};
+    l.appendChild(c);l.appendChild(document.createTextNode(" "+h.n.charAt(0)+h.n.slice(1).toLowerCase()));
+    holList.appendChild(l);
+  });
+
+  var dateRows=document.getElementById("dateRows");
+  function drawDates(){
+    dateRows.innerHTML="";
+    S.dates.forEach(function(x,i){
+      var r=document.createElement("div");r.className="dr";
+      var ms=document.createElement("select");
+      MONTH_ABBR.forEach(function(a,j){var o=document.createElement("option");o.value=j+1;o.textContent=a;ms.appendChild(o);});
+      ms.value=x.m;ms.onchange=function(){x.m=+ms.value;x.d=Math.min(x.d,dim(S.y,x.m));di.value=x.d;render();};
+      var di=document.createElement("input");di.type="number";di.min=1;di.max=31;di.value=x.d;
+      di.onchange=function(){x.d=Math.min(dim(S.y,x.m),Math.max(1,+di.value||1));di.value=x.d;render();};
+      var li=document.createElement("input");li.type="text";li.maxLength=24;li.placeholder="WHAT IS IT";li.value=x.label;
+      li.oninput=function(){x.label=li.value;render();};
+      var del=document.createElement("button");del.className="del";del.innerHTML="&times;";
+      del.onclick=function(){S.dates.splice(i,1);drawDates();render();};
+      r.appendChild(ms);r.appendChild(di);r.appendChild(li);r.appendChild(del);
+      dateRows.appendChild(r);
+    });
+  }
+  document.getElementById("addDate").onclick=function(){
+    if(S.dates.length>=40)return;
+    S.dates.push({m:1,d:1,label:""});drawDates();render();
+    var last=dateRows.querySelector(".dr:last-child input[type=text]");if(last)last.focus();
+  };
+  drawDates();
+
+  var swBox=document.getElementById("swatches");
+  Object.keys(ACCENTS).forEach(function(k){
+    var b=document.createElement("button");b.className="sw"+(k===S.acc?" on":"");b.style.background=ACCENTS[k];b.title=k;
+    b.onclick=function(){S.acc=k;Array.prototype.forEach.call(swBox.children,function(c){c.classList.remove("on");});b.classList.add("on");render();};
+    swBox.appendChild(b);
+  });
+
+  document.getElementById("printBtn").onclick=function(){window.print();};
+
+  render();
+})();
+</script>
+</body>
+</html>

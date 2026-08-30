@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Clarity Calendar — a year on one wall</title>
+<meta name="description" content="A free year-at-a-glance wall calendar. Every month is a single row, weekends shaded, holidays marked. Print it 48 by 36, or make your own with your dates on it.">
+<meta property="og:title" content="The Clarity Calendar">
+<meta property="og:description" content="The whole year on one wall. Free to print, free to make your own.">
+<meta property="og:image" content="https://clarkitect-resources.vercel.app/img/clarity-calendar-2027.jpg">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Khand:wght@500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f6f4f0; --ink:#161616; --muted:#6b6b6b; --line:#e0dbd2;
+    --bronze:#CA8B63; --card:#fdfcfa;
+    --head:'Khand',sans-serif; --body:'Inter',sans-serif; --mono:'JetBrains Mono',monospace;
+    --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.035'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.65;-webkit-font-smoothing:antialiased}
+  body::before{content:"";position:fixed;inset:0;background-image:var(--grain);pointer-events:none;z-index:0}
+  .wrap{max-width:880px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+  header{padding:56px 0 0}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--bronze)}
+  h1{font-family:var(--head);font-weight:600;font-size:clamp(44px,8vw,84px);line-height:.98;text-transform:uppercase;letter-spacing:.01em;margin-top:14px}
+  h1 span{color:var(--bronze)}
+  .lede{margin-top:16px;font-size:18px;color:var(--muted);max-width:54ch}
+  .cta{display:flex;gap:14px;margin-top:28px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:15px 26px;font-family:var(--head);font-weight:600;font-size:19px;text-transform:uppercase;letter-spacing:.06em;text-decoration:none;border:1px solid var(--ink)}
+  .btn.solid{background:var(--ink);color:#fff}
+  .btn.solid:hover{background:var(--bronze);border-color:var(--bronze)}
+  .btn.ghost{color:var(--ink)}
+  .btn.ghost:hover{border-color:var(--bronze);color:var(--bronze)}
+  .heroimg{margin-top:40px;border:1px solid var(--line);overflow:hidden;position:relative}
+  .heroimg img{display:block;width:100%;height:auto}
+  .heroimg .cap{position:absolute;left:0;bottom:0;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#fff;background:rgba(22,22,22,.72);padding:6px 12px}
+  main{padding:56px 0 24px}
+  .seclabel{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+  .seclabel .no{font-family:var(--mono);font-size:12px;color:var(--bronze);letter-spacing:.2em}
+  .seclabel h2{font-family:var(--head);font-weight:600;font-size:clamp(26px,4vw,36px);text-transform:uppercase;line-height:1}
+  .seclabel .rule{flex:1;height:1px;background:var(--line)}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .stepcard{background:var(--card);border:1px solid var(--line);padding:24px}
+  .stepcard .n{font-family:var(--mono);font-size:11px;letter-spacing:.24em;color:var(--bronze)}
+  .stepcard h3{font-family:var(--head);font-weight:600;font-size:22px;text-transform:uppercase;margin:8px 0 6px;line-height:1.05}
+  .stepcard p{font-size:14px;color:var(--muted)}
+  .why{margin-top:48px;padding:26px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:16px;color:var(--muted);max-width:64ch}
+  .why b{color:var(--ink);font-weight:600}
+  footer{padding:30px 0 60px;font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--muted);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  footer a{color:inherit;text-decoration:none}
+  footer a:hover{color:var(--bronze)}
+  @media(max-width:640px){.steps{grid-template-columns:1fr}header{padding:40px 0 0}}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="kicker">TOOL 03 · FREE PRINT</div>
+      <h1>The whole year<br><span>on one wall</span></h1>
+      <p class="lede">The Clarity Calendar is a 48 by 36 sheet with every day of the year on it. Each month is a single row, weekends shaded, holidays marked, room to write in every square. When the year hangs in front of you, you plan differently.</p>
+      <div class="cta">
+        <a class="btn solid" href="maker.html">Make your own</a>
+        <a class="btn ghost" href="2027-clarity-calendar.pdf">Get the 2027 PDF</a>
+      </div>
+      <div class="heroimg"><img src="../img/clarity-calendar-2027.jpg" alt="The 2027 Clarity Calendar: twelve month rows across one large sheet, weekends shaded"><span class="cap">2027 · One sheet · 48 × 36</span></div>
+    </header>
+
+    <main>
+      <div class="seclabel"><span class="no">HOW</span><h2>Wall in three steps</h2><span class="rule"></span></div>
+      <div class="steps">
+        <div class="stepcard">
+          <span class="n">01</span>
+          <h3>Set it up</h3>
+          <p>Use the ready 2027 PDF, or open the Maker and pick your year, turn holidays on or off, and add your own dates so they print on the sheet.</p>
+        </div>
+        <div class="stepcard">
+          <span class="n">02</span>
+          <h3>Print it big</h3>
+          <p>Any print shop can run it. Ask for 48 by 36 at 100%. Color is best; a black and white engineering print works and costs a few dollars.</p>
+        </div>
+        <div class="stepcard">
+          <span class="n">03</span>
+          <h3>Hang it where you plan</h3>
+          <p>Office, studio, kitchen wall. A pen on a string next to it. Write commitments in the squares, not in an app.</p>
+        </div>
+      </div>
+
+      <p class="why"><b>Why paper, why this big?</b> A screen shows you a month at a time and lets you scroll away from your promises. A wall shows you the shape of the whole year, how close October really is, and what you said you would do by then.</p>
+    </main>
+
+    <footer>
+      <span>© Roger Clark · The Clarkitect</span>
+      <span><a href="../">← ALL RESOURCES</a></span>
+    </footer>
+  </div>
+</body>
+</html>
